@@ -6,5 +6,4 @@ implementors["tensorflow"] = [];
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

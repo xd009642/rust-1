@@ -1607,7 +1607,7 @@
                 <span class="ident">stringify</span> <span class="op">!</span> ( <span class="ident">__val</span> ) ));
 }
 <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">__fsid_t</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
 }
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">__clock_t</span> <span class="op">=</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_long</span>;
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">__rlim_t</span> <span class="op">=</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_ulong</span>;
@@ -1656,7 +1656,7 @@
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">intmax_t</span> <span class="op">=</span> <span class="ident">__intmax_t</span>;
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">uintmax_t</span> <span class="op">=</span> <span class="ident">__uintmax_t</span>;
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_Version</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_Version</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TF_DataType_TF_COMPLEX</span>: <span class="ident">TF_DataType</span> <span class="op">=</span> <span class="ident">TF_DataType</span>::<span class="ident">TF_COMPLEX64</span>;
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
@@ -1687,7 +1687,7 @@
     <span class="ident">TF_UINT64</span> <span class="op">=</span> <span class="number">23</span>,
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DataTypeSize</span>(<span class="ident">dt</span>: <span class="ident">TF_DataType</span>) <span class="op">-&gt;</span> <span class="ident">usize</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DataTypeSize</span>(<span class="ident">dt</span>: <span class="ident">TF_DataType</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
@@ -1716,7 +1716,7 @@
     <span class="ident">_unused</span>: [<span class="ident">u8</span>; <span class="number">0</span>],
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewStatus</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewStatus</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteStatus</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>);
@@ -1726,10 +1726,10 @@
                         <span class="ident">msg</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>);
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetCode</span>(<span class="ident">s</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="ident">TF_Code</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetCode</span>(<span class="ident">s</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_Code</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_Message</span>(<span class="ident">s</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_Message</span>(<span class="ident">s</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>)]</span>
@@ -1764,20 +1764,20 @@
                 <span class="ident">stringify</span> <span class="op">!</span> ( <span class="ident">data_deallocator</span> ) ));
 }
 <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">TF_Buffer</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewBufferFromString</span>(<span class="ident">proto</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>,
-                                  <span class="ident">proto_len</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
+                                  <span class="ident">proto_len</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewBuffer</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewBuffer</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteBuffer</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>);
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetBuffer</span>(<span class="ident">buffer</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>) <span class="op">-&gt;</span> <span class="ident">TF_Buffer</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetBuffer</span>(<span class="ident">buffer</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_Buffer</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -1796,49 +1796,49 @@
                                                                        <span class="ident">arg</span>:
                                                                            <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>)<span class="op">&gt;</span>,
                         <span class="ident">deallocator_arg</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_AllocateTensor</span>(<span class="ident">arg1</span>: <span class="ident">TF_DataType</span>, <span class="ident">dims</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">i64</span>,
                              <span class="ident">num_dims</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>, <span class="ident">len</span>: <span class="ident">usize</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_TensorMaybeMove</span>(<span class="ident">tensor</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_TensorMaybeMove</span>(<span class="ident">tensor</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteTensor</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>);
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_TensorType</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Tensor</span>) <span class="op">-&gt;</span> <span class="ident">TF_DataType</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_TensorType</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Tensor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_DataType</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NumDims</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Tensor</span>) <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NumDims</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Tensor</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_Dim</span>(<span class="ident">tensor</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Tensor</span>, <span class="ident">dim_index</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>)
-     <span class="op">-&gt;</span> <span class="ident">i64</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i64</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_TensorByteSize</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Tensor</span>) <span class="op">-&gt;</span> <span class="ident">usize</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_TensorByteSize</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Tensor</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_TensorData</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_Tensor</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_StringEncode</span>(<span class="ident">src</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>, <span class="ident">src_len</span>: <span class="ident">usize</span>,
                            <span class="ident">dst</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>, <span class="ident">dst_len</span>: <span class="ident">usize</span>,
-                           <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="ident">usize</span>;
+                           <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_StringDecode</span>(<span class="ident">src</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>, <span class="ident">src_len</span>: <span class="ident">usize</span>,
                            <span class="ident">dst</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
                            <span class="ident">dst_len</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">usize</span>, <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="ident">usize</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_StringEncodedSize</span>(<span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">usize</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_StringEncodedSize</span>(<span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -1846,7 +1846,7 @@
     <span class="ident">_unused</span>: [<span class="ident">u8</span>; <span class="number">0</span>],
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewSessionOptions</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_SessionOptions</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewSessionOptions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_SessionOptions</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_SetTarget</span>(<span class="ident">options</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_SessionOptions</span>,
@@ -1866,7 +1866,7 @@
     <span class="ident">_unused</span>: [<span class="ident">u8</span>; <span class="number">0</span>],
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewGraph</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewGraph</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteGraph</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>);
@@ -1905,7 +1905,7 @@
                 <span class="ident">stringify</span> <span class="op">!</span> ( <span class="ident">index</span> ) ));
 }
 <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">TF_Input</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>)]</span>
@@ -1931,7 +1931,7 @@
                 <span class="ident">stringify</span> <span class="op">!</span> ( <span class="ident">index</span> ) ));
 }
 <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">TF_Output</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -1952,7 +1952,7 @@
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphGetTensorNumDims</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>, <span class="ident">output</span>: <span class="ident">TF_Output</span>,
                                     <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphGetTensorShape</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>, <span class="ident">output</span>: <span class="ident">TF_Output</span>,
@@ -1964,7 +1964,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewOperation</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>,
                            <span class="ident">op_type</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
                            <span class="ident">oper_name</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_OperationDescription</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_OperationDescription</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_SetDevice</span>(<span class="ident">desc</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_OperationDescription</span>,
@@ -2099,64 +2099,64 @@
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_FinishOperation</span>(<span class="ident">desc</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_OperationDescription</span>,
-                              <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>;
+                              <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationName</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationOpType</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationDevice</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationNumOutputs</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationOutputType</span>(<span class="ident">oper_out</span>: <span class="ident">TF_Output</span>) <span class="op">-&gt;</span> <span class="ident">TF_DataType</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationOutputType</span>(<span class="ident">oper_out</span>: <span class="ident">TF_Output</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_DataType</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationOutputListLength</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
                                         <span class="ident">arg_name</span>:
                                             <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
                                         <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationNumInputs</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationInputType</span>(<span class="ident">oper_in</span>: <span class="ident">TF_Input</span>) <span class="op">-&gt;</span> <span class="ident">TF_DataType</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationInputType</span>(<span class="ident">oper_in</span>: <span class="ident">TF_Input</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_DataType</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationInputListLength</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
                                        <span class="ident">arg_name</span>:
                                            <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
                                        <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationInput</span>(<span class="ident">oper_in</span>: <span class="ident">TF_Input</span>) <span class="op">-&gt;</span> <span class="ident">TF_Output</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationInput</span>(<span class="ident">oper_in</span>: <span class="ident">TF_Input</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_Output</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationOutputNumConsumers</span>(<span class="ident">oper_out</span>: <span class="ident">TF_Output</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationOutputConsumers</span>(<span class="ident">oper_out</span>: <span class="ident">TF_Output</span>,
                                        <span class="ident">consumers</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Input</span>,
                                        <span class="ident">max_consumers</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationNumControlInputs</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationGetControlInputs</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
@@ -2164,11 +2164,11 @@
                                             <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
                                         <span class="ident">max_control_inputs</span>:
                                             ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationNumControlOutputs</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationGetControlOutputs</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
@@ -2176,7 +2176,7 @@
                                              <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
                                          <span class="ident">max_control_outputs</span>:
                                              ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>)]</span>
@@ -2227,14 +2227,14 @@
                 <span class="string">&quot;::&quot;</span> , <span class="ident">stringify</span> <span class="op">!</span> ( <span class="ident">total_size</span> ) ));
 }
 <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">TF_AttrMetadata</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationGetAttrMetadata</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
                                        <span class="ident">attr_name</span>:
                                            <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
                                        <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="ident">TF_AttrMetadata</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_AttrMetadata</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationGetAttrString</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
@@ -2368,11 +2368,11 @@
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphOperationByName</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>,
                                    <span class="ident">oper_name</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphNextOperation</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>, <span class="ident">pos</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">usize</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphToGraphDef</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>,
@@ -2396,7 +2396,7 @@
     <span class="ident">_unused</span>: [<span class="ident">u8</span>; <span class="number">0</span>],
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewImportGraphDefOptions</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_ImportGraphDefOptions</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewImportGraphDefOptions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_ImportGraphDefOptions</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteImportGraphDefOptions</span>(<span class="ident">opts</span>:
@@ -2460,7 +2460,7 @@
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_ImportGraphDefOptionsNumReturnOutputs</span>(<span class="ident">opts</span>:
                                                         <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_ImportGraphDefOptions</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_ImportGraphDefOptionsAddReturnOperation</span>(<span class="ident">opts</span>:
@@ -2471,7 +2471,7 @@
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_ImportGraphDefOptionsNumReturnOperations</span>(<span class="ident">opts</span>:
                                                            <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_ImportGraphDefOptions</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -2514,7 +2514,7 @@
                                              <span class="ident">options</span>:
                                                  <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_ImportGraphDefOptions</span>,
                                              <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_ImportGraphDefResults</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_ImportGraphDefResults</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphImportGraphDefWithReturnOutputs</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>,
@@ -2540,14 +2540,14 @@
                                 <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>);
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphNumFunctions</span>(<span class="ident">g</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>) <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphNumFunctions</span>(<span class="ident">g</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GraphGetFunctions</span>(<span class="ident">g</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>,
                                 <span class="ident">funcs</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Function</span>,
                                 <span class="ident">max_func</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>,
                                 <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_OperationToNodeDef</span>(<span class="ident">oper</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Operation</span>,
@@ -2614,12 +2614,12 @@
                 , <span class="ident">stringify</span> <span class="op">!</span> ( <span class="ident">name</span> ) ));
 }
 <span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">TF_WhileParams</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> { <span class="kw-2">*</span><span class="self">self</span> }
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewWhile</span>(<span class="ident">g</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>, <span class="ident">inputs</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Output</span>,
                        <span class="ident">ninputs</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>, <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="ident">TF_WhileParams</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_WhileParams</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_FinishWhile</span>(<span class="ident">params</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_WhileParams</span>,
@@ -2659,11 +2659,11 @@
                                   <span class="kw-2">*</span><span class="kw">const</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
                               <span class="ident">opts</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_FunctionOptions</span>,
                               <span class="ident">description</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
-                              <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Function</span>;
+                              <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Function</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_FunctionName</span>(<span class="ident">func</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Function</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_FunctionToFunctionDef</span>(<span class="ident">func</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Function</span>,
@@ -2674,7 +2674,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_FunctionImportFunctionDef</span>(<span class="ident">proto</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>,
                                         <span class="ident">proto_len</span>: <span class="ident">usize</span>,
                                         <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Function</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Function</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_FunctionSetAttrValueProto</span>(<span class="ident">func</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Function</span>,
@@ -2698,7 +2698,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_TryEvaluateConstant</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>, <span class="ident">output</span>: <span class="ident">TF_Output</span>,
                                   <span class="ident">result</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Tensor</span>,
                                   <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_uchar</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_uchar</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -2707,7 +2707,7 @@
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewSession</span>(<span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>, <span class="ident">opts</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_SessionOptions</span>,
-                         <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Session</span>;
+                         <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Session</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_LoadSessionFromSavedModel</span>(<span class="ident">session_options</span>:
@@ -2721,7 +2721,7 @@
                                         <span class="ident">graph</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Graph</span>,
                                         <span class="ident">meta_graph_def</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>,
                                         <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Session</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Session</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_CloseSession</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Session</span>, <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>);
@@ -2777,7 +2777,7 @@
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewDeprecatedSession</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_SessionOptions</span>,
                                    <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeprecatedSession</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeprecatedSession</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_CloseDeprecatedSession</span>(<span class="ident">arg1</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeprecatedSession</span>,
@@ -2841,41 +2841,41 @@
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_SessionListDevices</span>(<span class="ident">session</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Session</span>,
                                  <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeviceList</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeviceList</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeprecatedSessionListDevices</span>(<span class="ident">session</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeprecatedSession</span>,
                                            <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeviceList</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeviceList</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteDeviceList</span>(<span class="ident">list</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_DeviceList</span>);
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeviceListCount</span>(<span class="ident">list</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_DeviceList</span>)
-     <span class="op">-&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
+     <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeviceListName</span>(<span class="ident">list</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_DeviceList</span>,
                              <span class="ident">index</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>,
                              <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeviceListType</span>(<span class="ident">list</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_DeviceList</span>,
                              <span class="ident">index</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>,
                              <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeviceListMemoryBytes</span>(<span class="ident">list</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_DeviceList</span>,
                                     <span class="ident">index</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>,
-                                    <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="ident">i64</span>;
+                                    <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i64</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeviceListIncarnation</span>(<span class="ident">list</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">TF_DeviceList</span>,
                                     <span class="ident">index</span>: ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_int</span>,
-                                    <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="ident">u64</span>;
+                                    <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -2884,16 +2884,16 @@
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_LoadLibrary</span>(<span class="ident">library_filename</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
-                          <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Library</span>;
+                          <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Library</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetOpList</span>(<span class="ident">lib_handle</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Library</span>) <span class="op">-&gt;</span> <span class="ident">TF_Buffer</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetOpList</span>(<span class="ident">lib_handle</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Library</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TF_Buffer</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteLibraryHandle</span>(<span class="ident">lib_handle</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Library</span>);
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetAllOpList</span>() <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetAllOpList</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -2902,7 +2902,7 @@
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewApiDefMap</span>(<span class="ident">op_list_buffer</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>,
-                           <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_ApiDefMap</span>;
+                           <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_ApiDefMap</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteApiDefMap</span>(<span class="ident">apimap</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_ApiDefMap</span>);
@@ -2916,16 +2916,16 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_ApiDefMapGet</span>(<span class="ident">api_def_map</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_ApiDefMap</span>,
                            <span class="ident">name</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
                            <span class="ident">name_len</span>: <span class="ident">usize</span>, <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetAllRegisteredKernels</span>(<span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_GetRegisteredKernelsForOp</span>(<span class="ident">name</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>,
                                         <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Buffer</span>;
 }
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -2935,7 +2935,7 @@
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_NewServer</span>(<span class="ident">proto</span>: <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_void</span>,
                         <span class="ident">proto_len</span>: <span class="ident">usize</span>, <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Server</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Server</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_ServerStart</span>(<span class="ident">server</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Server</span>, <span class="ident">status</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Status</span>);
@@ -2948,10 +2948,10 @@
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_ServerTarget</span>(<span class="ident">server</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Server</span>)
-     <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
+     <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> ::<span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 }
 <span class="kw">extern</span> <span class="string">&quot;C&quot;</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">TF_DeleteServer</span>(<span class="ident">server</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">TF_Server</span>);
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "tensorflow_sys";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "tensorflow_sys";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

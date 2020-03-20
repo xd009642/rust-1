@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["RecordWriter","A type for writing bytes in the TFRecords format."]]});
+initSidebarItems({"enum":[["RecordReadError","The possible errors from a record read attempt"]],"struct":[["RecordReader","A type for deserializing TFRecord formats"],["RecordWriter","A type for writing bytes in the TFRecords format."]]});

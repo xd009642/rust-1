@@ -7,5 +7,4 @@ implementors["tensorflow"] = [{text:"impl&lt;T:&nbsp;<a class=\"trait\" href=\"t
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()
