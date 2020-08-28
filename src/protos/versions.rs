@@ -23,7 +23,7 @@
 /// of protobuf runtime.
 // const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_2_17_0;
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct VersionDef {
     // message fields
     pub producer: i32,
@@ -47,6 +47,7 @@ impl VersionDef {
 
     // int32 producer = 1;
 
+
     pub fn get_producer(&self) -> i32 {
         self.producer
     }
@@ -61,6 +62,7 @@ impl VersionDef {
 
     // int32 min_consumer = 2;
 
+
     pub fn get_min_consumer(&self) -> i32 {
         self.min_consumer
     }
@@ -74,6 +76,7 @@ impl VersionDef {
     }
 
     // repeated int32 bad_consumers = 3;
+
 
     pub fn get_bad_consumers(&self) -> &[i32] {
         &self.bad_consumers
@@ -103,46 +106,30 @@ impl ::protobuf::Message for VersionDef {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
                     self.producer = tmp;
-                }
+                },
                 2 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
                     self.min_consumer = tmp;
-                }
+                },
                 3 => {
-                    ::protobuf::rt::read_repeated_int32_into(
-                        wire_type,
-                        is,
-                        &mut self.bad_consumers,
-                    )?;
-                }
+                    ::protobuf::rt::read_repeated_int32_into(wire_type, is, &mut self.bad_consumers)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -153,32 +140,20 @@ impl ::protobuf::Message for VersionDef {
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
         if self.producer != 0 {
-            my_size += ::protobuf::rt::value_size(
-                1,
-                self.producer,
-                ::protobuf::wire_format::WireTypeVarint,
-            );
+            my_size += ::protobuf::rt::value_size(1, self.producer, ::protobuf::wire_format::WireTypeVarint);
         }
         if self.min_consumer != 0 {
-            my_size += ::protobuf::rt::value_size(
-                2,
-                self.min_consumer,
-                ::protobuf::wire_format::WireTypeVarint,
-            );
+            my_size += ::protobuf::rt::value_size(2, self.min_consumer, ::protobuf::wire_format::WireTypeVarint);
         }
         for value in &self.bad_consumers {
-            my_size +=
-                ::protobuf::rt::value_size(3, *value, ::protobuf::wire_format::WireTypeVarint);
-        }
+            my_size += ::protobuf::rt::value_size(3, *value, ::protobuf::wire_format::WireTypeVarint);
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.producer != 0 {
             os.write_int32(1, self.producer)?;
         }
@@ -187,7 +162,7 @@ impl ::protobuf::Message for VersionDef {
         }
         for v in &self.bad_consumers {
             os.write_int32(3, *v)?;
-        }
+        };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -223,38 +198,28 @@ impl ::protobuf::Message for VersionDef {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeInt32,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeInt32>(
                 "producer",
-                |m: &VersionDef| &m.producer,
-                |m: &mut VersionDef| &mut m.producer,
+                |m: &VersionDef| { &m.producer },
+                |m: &mut VersionDef| { &mut m.producer },
             ));
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeInt32,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeInt32>(
                 "min_consumer",
-                |m: &VersionDef| &m.min_consumer,
-                |m: &mut VersionDef| &mut m.min_consumer,
+                |m: &VersionDef| { &m.min_consumer },
+                |m: &mut VersionDef| { &mut m.min_consumer },
             ));
-            fields.push(::protobuf::reflect::accessor::make_vec_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeInt32,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_vec_accessor::<_, ::protobuf::types::ProtobufTypeInt32>(
                 "bad_consumers",
-                |m: &VersionDef| &m.bad_consumers,
-                |m: &mut VersionDef| &mut m.bad_consumers,
+                |m: &VersionDef| { &m.bad_consumers },
+                |m: &mut VersionDef| { &mut m.bad_consumers },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<VersionDef>(
                 "VersionDef",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -295,14 +260,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     core/framework\xf8\x01\x01b\x06proto3\
 ";
 
-static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<
-    ::protobuf::descriptor::FileDescriptorProto,
-> = ::protobuf::rt::LazyV2::INIT;
+static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::rt::LazyV2::INIT;
 
 fn parse_descriptor_proto() -> ::protobuf::descriptor::FileDescriptorProto {
     ::protobuf::parse_from_bytes(file_descriptor_proto_data).unwrap()
 }
 
 pub fn file_descriptor_proto() -> &'static ::protobuf::descriptor::FileDescriptorProto {
-    file_descriptor_proto_lazy.get(|| parse_descriptor_proto())
+    file_descriptor_proto_lazy.get(|| {
+        parse_descriptor_proto()
+    })
 }

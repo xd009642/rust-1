@@ -7,6 +7,9 @@ use std::result::Result;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        panic!("Expected two arguments, tensorflow_folder and output_folder");
+    }
     let tensorflow_folder = &args[1];
     let output_folder = Path::new(&args[2]);
     protoc_rust::run(protoc_rust::Args {
@@ -37,6 +40,10 @@ fn main() -> Result<(), Box<dyn Error>> {
             ),
             &format!(
                 "{}/tensorflow/core/framework/resource_handle.proto",
+                tensorflow_folder
+            ),
+            &format!(
+                "{}/tensorflow/core/protobuf/config.proto",
                 tensorflow_folder
             ),
             &format!(

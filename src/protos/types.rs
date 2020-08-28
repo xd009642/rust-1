@@ -23,7 +23,7 @@
 /// of protobuf runtime.
 // const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_2_17_0;
 
-#[derive(Clone, PartialEq, Eq, Debug, Hash)]
+#[derive(Clone,PartialEq,Eq,Debug,Hash)]
 pub enum DataType {
     DT_INVALID = 0,
     DT_FLOAT = 1,
@@ -128,7 +128,7 @@ impl ::protobuf::ProtobufEnum for DataType {
             121 => ::std::option::Option::Some(DataType::DT_VARIANT_REF),
             122 => ::std::option::Option::Some(DataType::DT_UINT32_REF),
             123 => ::std::option::Option::Some(DataType::DT_UINT64_REF),
-            _ => ::std::option::Option::None,
+            _ => ::std::option::Option::None
         }
     }
 
@@ -186,18 +186,15 @@ impl ::protobuf::ProtobufEnum for DataType {
     }
 
     fn enum_descriptor_static() -> &'static ::protobuf::reflect::EnumDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::EnumDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::EnumDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
-            ::protobuf::reflect::EnumDescriptor::new_pb_name::<DataType>(
-                "DataType",
-                file_descriptor_proto(),
-            )
+            ::protobuf::reflect::EnumDescriptor::new_pb_name::<DataType>("DataType", file_descriptor_proto())
         })
     }
 }
 
-impl ::std::marker::Copy for DataType {}
+impl ::std::marker::Copy for DataType {
+}
 
 impl ::std::default::Default for DataType {
     fn default() -> Self {
@@ -237,14 +234,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     low/tensorflow/tensorflow/go/core/framework\xf8\x01\x01b\x06proto3\
 ";
 
-static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<
-    ::protobuf::descriptor::FileDescriptorProto,
-> = ::protobuf::rt::LazyV2::INIT;
+static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::rt::LazyV2::INIT;
 
 fn parse_descriptor_proto() -> ::protobuf::descriptor::FileDescriptorProto {
     ::protobuf::parse_from_bytes(file_descriptor_proto_data).unwrap()
 }
 
 pub fn file_descriptor_proto() -> &'static ::protobuf::descriptor::FileDescriptorProto {
-    file_descriptor_proto_lazy.get(|| parse_descriptor_proto())
+    file_descriptor_proto_lazy.get(|| {
+        parse_descriptor_proto()
+    })
 }

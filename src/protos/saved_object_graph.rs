@@ -23,12 +23,11 @@
 /// of protobuf runtime.
 // const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_2_17_0;
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedObjectGraph {
     // message fields
     pub nodes: ::protobuf::RepeatedField<SavedObject>,
-    pub concrete_functions:
-        ::std::collections::HashMap<::std::string::String, SavedConcreteFunction>,
+    pub concrete_functions: ::std::collections::HashMap<::std::string::String, SavedConcreteFunction>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::CachedSize,
@@ -46,6 +45,7 @@ impl SavedObjectGraph {
     }
 
     // repeated .tensorflow.SavedObject nodes = 1;
+
 
     pub fn get_nodes(&self) -> &[SavedObject] {
         &self.nodes
@@ -71,9 +71,8 @@ impl SavedObjectGraph {
 
     // repeated .tensorflow.SavedObjectGraph.ConcreteFunctionsEntry concrete_functions = 2;
 
-    pub fn get_concrete_functions(
-        &self,
-    ) -> &::std::collections::HashMap<::std::string::String, SavedConcreteFunction> {
+
+    pub fn get_concrete_functions(&self) -> &::std::collections::HashMap<::std::string::String, SavedConcreteFunction> {
         &self.concrete_functions
     }
     pub fn clear_concrete_functions(&mut self) {
@@ -81,28 +80,18 @@ impl SavedObjectGraph {
     }
 
     // Param is passed by value, moved
-    pub fn set_concrete_functions(
-        &mut self,
-        v: ::std::collections::HashMap<::std::string::String, SavedConcreteFunction>,
-    ) {
+    pub fn set_concrete_functions(&mut self, v: ::std::collections::HashMap<::std::string::String, SavedConcreteFunction>) {
         self.concrete_functions = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_concrete_functions(
-        &mut self,
-    ) -> &mut ::std::collections::HashMap<::std::string::String, SavedConcreteFunction> {
+    pub fn mut_concrete_functions(&mut self) -> &mut ::std::collections::HashMap<::std::string::String, SavedConcreteFunction> {
         &mut self.concrete_functions
     }
 
     // Take field
-    pub fn take_concrete_functions(
-        &mut self,
-    ) -> ::std::collections::HashMap<::std::string::String, SavedConcreteFunction> {
-        ::std::mem::replace(
-            &mut self.concrete_functions,
-            ::std::collections::HashMap::new(),
-        )
+    pub fn take_concrete_functions(&mut self) -> ::std::collections::HashMap<::std::string::String, SavedConcreteFunction> {
+        ::std::mem::replace(&mut self.concrete_functions, ::std::collections::HashMap::new())
     }
 }
 
@@ -112,34 +101,23 @@ impl ::protobuf::Message for SavedObjectGraph {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.nodes)?;
-                }
+                },
                 2 => {
-                    ::protobuf::rt::read_map_into::<
-                        ::protobuf::types::ProtobufTypeString,
-                        ::protobuf::types::ProtobufTypeMessage<SavedConcreteFunction>,
-                    >(wire_type, is, &mut self.concrete_functions)?;
-                }
+                    ::protobuf::rt::read_map_into::<::protobuf::types::ProtobufTypeString, ::protobuf::types::ProtobufTypeMessage<SavedConcreteFunction>>(wire_type, is, &mut self.concrete_functions)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -152,29 +130,20 @@ impl ::protobuf::Message for SavedObjectGraph {
         for value in &self.nodes {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
-        my_size += ::protobuf::rt::compute_map_size::<
-            ::protobuf::types::ProtobufTypeString,
-            ::protobuf::types::ProtobufTypeMessage<SavedConcreteFunction>,
-        >(2, &self.concrete_functions);
+        };
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::types::ProtobufTypeString, ::protobuf::types::ProtobufTypeMessage<SavedConcreteFunction>>(2, &self.concrete_functions);
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         for v in &self.nodes {
             os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
-        ::protobuf::rt::write_map_with_cached_sizes::<
-            ::protobuf::types::ProtobufTypeString,
-            ::protobuf::types::ProtobufTypeMessage<SavedConcreteFunction>,
-        >(2, &self.concrete_functions, os)?;
+        };
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::types::ProtobufTypeString, ::protobuf::types::ProtobufTypeMessage<SavedConcreteFunction>>(2, &self.concrete_functions, os)?;
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -210,33 +179,23 @@ impl ::protobuf::Message for SavedObjectGraph {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(
-                ::protobuf::reflect::accessor::make_repeated_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<SavedObject>,
-                >(
-                    "nodes",
-                    |m: &SavedObjectGraph| &m.nodes,
-                    |m: &mut SavedObjectGraph| &mut m.nodes,
-                ),
-            );
-            fields.push(::protobuf::reflect::accessor::make_map_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-                ::protobuf::types::ProtobufTypeMessage<SavedConcreteFunction>,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<SavedObject>>(
+                "nodes",
+                |m: &SavedObjectGraph| { &m.nodes },
+                |m: &mut SavedObjectGraph| { &mut m.nodes },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_map_accessor::<_, ::protobuf::types::ProtobufTypeString, ::protobuf::types::ProtobufTypeMessage<SavedConcreteFunction>>(
                 "concrete_functions",
-                |m: &SavedObjectGraph| &m.concrete_functions,
-                |m: &mut SavedObjectGraph| &mut m.concrete_functions,
+                |m: &SavedObjectGraph| { &m.concrete_functions },
+                |m: &mut SavedObjectGraph| { &mut m.concrete_functions },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedObjectGraph>(
                 "SavedObjectGraph",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -267,15 +226,11 @@ impl ::protobuf::reflect::ProtobufValue for SavedObjectGraph {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedObject {
     // message fields
-    pub children: ::protobuf::RepeatedField<
-        super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference,
-    >,
-    pub slot_variables: ::protobuf::RepeatedField<
-        super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference,
-    >,
+    pub children: ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference>,
+    pub slot_variables: ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference>,
     // message oneof groups
     pub kind: ::std::option::Option<SavedObject_oneof_kind>,
     // special fields
@@ -289,7 +244,7 @@ impl<'a> ::std::default::Default for &'a SavedObject {
     }
 }
 
-#[derive(Clone, PartialEq, Debug)]
+#[derive(Clone,PartialEq,Debug)]
 pub enum SavedObject_oneof_kind {
     user_object(SavedUserObject),
     asset(SavedAsset),
@@ -307,10 +262,8 @@ impl SavedObject {
 
     // repeated .tensorflow.TrackableObjectGraph.TrackableObject.ObjectReference children = 1;
 
-    pub fn get_children(
-        &self,
-    ) -> &[super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference]
-    {
+
+    pub fn get_children(&self) -> &[super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference] {
         &self.children
     }
     pub fn clear_children(&mut self) {
@@ -318,37 +271,24 @@ impl SavedObject {
     }
 
     // Param is passed by value, moved
-    pub fn set_children(
-        &mut self,
-        v: ::protobuf::RepeatedField<
-            super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference,
-        >,
-    ) {
+    pub fn set_children(&mut self, v: ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference>) {
         self.children = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_children(
-        &mut self,
-    ) -> &mut ::protobuf::RepeatedField<
-        super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference,
-    > {
+    pub fn mut_children(&mut self) -> &mut ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference> {
         &mut self.children
     }
 
     // Take field
-    pub fn take_children(
-        &mut self,
-    ) -> ::protobuf::RepeatedField<
-        super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference,
-    > {
+    pub fn take_children(&mut self) -> ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference> {
         ::std::mem::replace(&mut self.children, ::protobuf::RepeatedField::new())
     }
 
     // repeated .tensorflow.TrackableObjectGraph.TrackableObject.SlotVariableReference slot_variables = 3;
 
 
-pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference]{
+    pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference] {
         &self.slot_variables
     }
     pub fn clear_slot_variables(&mut self) {
@@ -356,32 +296,22 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     }
 
     // Param is passed by value, moved
-    pub fn set_slot_variables(
-        &mut self,
-        v: ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference>,
-    ) {
+    pub fn set_slot_variables(&mut self, v: ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference>) {
         self.slot_variables = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_slot_variables(
-        &mut self,
-    ) -> &mut ::protobuf::RepeatedField<
-        super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference,
-    > {
+    pub fn mut_slot_variables(&mut self) -> &mut ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference> {
         &mut self.slot_variables
     }
 
     // Take field
-    pub fn take_slot_variables(
-        &mut self,
-    ) -> ::protobuf::RepeatedField<
-        super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference,
-    > {
+    pub fn take_slot_variables(&mut self) -> ::protobuf::RepeatedField<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_SlotVariableReference> {
         ::std::mem::replace(&mut self.slot_variables, ::protobuf::RepeatedField::new())
     }
 
     // .tensorflow.SavedUserObject user_object = 4;
+
 
     pub fn get_user_object(&self) -> &SavedUserObject {
         match self.kind {
@@ -409,9 +339,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     pub fn mut_user_object(&mut self) -> &mut SavedUserObject {
         if let ::std::option::Option::Some(SavedObject_oneof_kind::user_object(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::user_object(
-                SavedUserObject::new(),
-            ));
+            self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::user_object(SavedUserObject::new()));
         }
         match self.kind {
             ::std::option::Option::Some(SavedObject_oneof_kind::user_object(ref mut v)) => v,
@@ -432,6 +360,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     }
 
     // .tensorflow.SavedAsset asset = 5;
+
 
     pub fn get_asset(&self) -> &SavedAsset {
         match self.kind {
@@ -459,8 +388,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     pub fn mut_asset(&mut self) -> &mut SavedAsset {
         if let ::std::option::Option::Some(SavedObject_oneof_kind::asset(_)) = self.kind {
         } else {
-            self.kind =
-                ::std::option::Option::Some(SavedObject_oneof_kind::asset(SavedAsset::new()));
+            self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::asset(SavedAsset::new()));
         }
         match self.kind {
             ::std::option::Option::Some(SavedObject_oneof_kind::asset(ref mut v)) => v,
@@ -481,6 +409,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     }
 
     // .tensorflow.SavedFunction function = 6;
+
 
     pub fn get_function(&self) -> &SavedFunction {
         match self.kind {
@@ -508,8 +437,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     pub fn mut_function(&mut self) -> &mut SavedFunction {
         if let ::std::option::Option::Some(SavedObject_oneof_kind::function(_)) = self.kind {
         } else {
-            self.kind =
-                ::std::option::Option::Some(SavedObject_oneof_kind::function(SavedFunction::new()));
+            self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::function(SavedFunction::new()));
         }
         match self.kind {
             ::std::option::Option::Some(SavedObject_oneof_kind::function(ref mut v)) => v,
@@ -530,6 +458,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     }
 
     // .tensorflow.SavedVariable variable = 7;
+
 
     pub fn get_variable(&self) -> &SavedVariable {
         match self.kind {
@@ -557,8 +486,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     pub fn mut_variable(&mut self) -> &mut SavedVariable {
         if let ::std::option::Option::Some(SavedObject_oneof_kind::variable(_)) = self.kind {
         } else {
-            self.kind =
-                ::std::option::Option::Some(SavedObject_oneof_kind::variable(SavedVariable::new()));
+            self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::variable(SavedVariable::new()));
         }
         match self.kind {
             ::std::option::Option::Some(SavedObject_oneof_kind::variable(ref mut v)) => v,
@@ -579,6 +507,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     }
 
     // .tensorflow.SavedBareConcreteFunction bare_concrete_function = 8;
+
 
     pub fn get_bare_concrete_function(&self) -> &SavedBareConcreteFunction {
         match self.kind {
@@ -604,18 +533,12 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
 
     // Mutable pointer to the field.
     pub fn mut_bare_concrete_function(&mut self) -> &mut SavedBareConcreteFunction {
-        if let ::std::option::Option::Some(SavedObject_oneof_kind::bare_concrete_function(_)) =
-            self.kind
-        {
+        if let ::std::option::Option::Some(SavedObject_oneof_kind::bare_concrete_function(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(
-                SavedObject_oneof_kind::bare_concrete_function(SavedBareConcreteFunction::new()),
-            );
+            self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::bare_concrete_function(SavedBareConcreteFunction::new()));
         }
         match self.kind {
-            ::std::option::Option::Some(SavedObject_oneof_kind::bare_concrete_function(
-                ref mut v,
-            )) => v,
+            ::std::option::Option::Some(SavedObject_oneof_kind::bare_concrete_function(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -633,6 +556,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     }
 
     // .tensorflow.SavedConstant constant = 9;
+
 
     pub fn get_constant(&self) -> &SavedConstant {
         match self.kind {
@@ -660,8 +584,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     pub fn mut_constant(&mut self) -> &mut SavedConstant {
         if let ::std::option::Option::Some(SavedObject_oneof_kind::constant(_)) = self.kind {
         } else {
-            self.kind =
-                ::std::option::Option::Some(SavedObject_oneof_kind::constant(SavedConstant::new()));
+            self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::constant(SavedConstant::new()));
         }
         match self.kind {
             ::std::option::Option::Some(SavedObject_oneof_kind::constant(ref mut v)) => v,
@@ -682,6 +605,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     }
 
     // .tensorflow.SavedResource resource = 10;
+
 
     pub fn get_resource(&self) -> &SavedResource {
         match self.kind {
@@ -709,8 +633,7 @@ pub fn get_slot_variables(&self) -> &[super::trackable_object_graph::TrackableOb
     pub fn mut_resource(&mut self) -> &mut SavedResource {
         if let ::std::option::Option::Some(SavedObject_oneof_kind::resource(_)) = self.kind {
         } else {
-            self.kind =
-                ::std::option::Option::Some(SavedObject_oneof_kind::resource(SavedResource::new()));
+            self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::resource(SavedResource::new()));
         }
         match self.kind {
             ::std::option::Option::Some(SavedObject_oneof_kind::resource(ref mut v)) => v,
@@ -737,12 +660,12 @@ impl ::protobuf::Message for SavedObject {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         for v in &self.slot_variables {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         if let Some(SavedObject_oneof_kind::user_object(ref v)) = self.kind {
             if !v.is_initialized() {
                 return false;
@@ -781,101 +704,61 @@ impl ::protobuf::Message for SavedObject {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.children)?;
-                }
+                },
                 3 => {
-                    ::protobuf::rt::read_repeated_message_into(
-                        wire_type,
-                        is,
-                        &mut self.slot_variables,
-                    )?;
-                }
+                    ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.slot_variables)?;
+                },
                 4 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::user_object(
-                        is.read_message()?,
-                    ));
-                }
+                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::user_object(is.read_message()?));
+                },
                 5 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::asset(
-                        is.read_message()?,
-                    ));
-                }
+                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::asset(is.read_message()?));
+                },
                 6 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::function(
-                        is.read_message()?,
-                    ));
-                }
+                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::function(is.read_message()?));
+                },
                 7 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::variable(
-                        is.read_message()?,
-                    ));
-                }
+                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::variable(is.read_message()?));
+                },
                 8 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        SavedObject_oneof_kind::bare_concrete_function(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::bare_concrete_function(is.read_message()?));
+                },
                 9 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::constant(
-                        is.read_message()?,
-                    ));
-                }
+                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::constant(is.read_message()?));
+                },
                 10 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::resource(
-                        is.read_message()?,
-                    ));
-                }
+                    self.kind = ::std::option::Option::Some(SavedObject_oneof_kind::resource(is.read_message()?));
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -888,41 +771,41 @@ impl ::protobuf::Message for SavedObject {
         for value in &self.children {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
+        };
         for value in &self.slot_variables {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
+        };
         if let ::std::option::Option::Some(ref v) = self.kind {
             match v {
                 &SavedObject_oneof_kind::user_object(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &SavedObject_oneof_kind::asset(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &SavedObject_oneof_kind::function(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &SavedObject_oneof_kind::variable(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &SavedObject_oneof_kind::bare_concrete_function(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &SavedObject_oneof_kind::constant(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &SavedObject_oneof_kind::resource(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
             };
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
@@ -930,57 +813,54 @@ impl ::protobuf::Message for SavedObject {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         for v in &self.children {
             os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
+        };
         for v in &self.slot_variables {
             os.write_tag(3, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
+        };
         if let ::std::option::Option::Some(ref v) = self.kind {
             match v {
                 &SavedObject_oneof_kind::user_object(ref v) => {
                     os.write_tag(4, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &SavedObject_oneof_kind::asset(ref v) => {
                     os.write_tag(5, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &SavedObject_oneof_kind::function(ref v) => {
                     os.write_tag(6, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &SavedObject_oneof_kind::variable(ref v) => {
                     os.write_tag(7, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &SavedObject_oneof_kind::bare_concrete_function(ref v) => {
                     os.write_tag(8, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &SavedObject_oneof_kind::constant(ref v) => {
                     os.write_tag(9, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &SavedObject_oneof_kind::resource(ref v) => {
                     os.write_tag(10, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
             };
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
@@ -1018,8 +898,7 @@ impl ::protobuf::Message for SavedObject {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
             fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::trackable_object_graph::TrackableObjectGraph_TrackableObject_ObjectReference>>(
@@ -1108,7 +987,7 @@ impl ::protobuf::reflect::ProtobufValue for SavedObject {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedUserObject {
     // message fields
     pub identifier: ::std::string::String,
@@ -1131,6 +1010,7 @@ impl SavedUserObject {
     }
 
     // string identifier = 1;
+
 
     pub fn get_identifier(&self) -> &str {
         &self.identifier
@@ -1157,10 +1037,9 @@ impl SavedUserObject {
 
     // .tensorflow.VersionDef version = 2;
 
+
     pub fn get_version(&self) -> &super::versions::VersionDef {
-        self.version.as_ref().unwrap_or_else(|| {
-            <super::versions::VersionDef as ::protobuf::Message>::default_instance()
-        })
+        self.version.as_ref().unwrap_or_else(|| <super::versions::VersionDef as ::protobuf::Message>::default_instance())
     }
     pub fn clear_version(&mut self) {
         self.version.clear();
@@ -1186,12 +1065,11 @@ impl SavedUserObject {
 
     // Take field
     pub fn take_version(&mut self) -> super::versions::VersionDef {
-        self.version
-            .take()
-            .unwrap_or_else(|| super::versions::VersionDef::new())
+        self.version.take().unwrap_or_else(|| super::versions::VersionDef::new())
     }
 
     // string metadata = 3;
+
 
     pub fn get_metadata(&self) -> &str {
         &self.metadata
@@ -1223,42 +1101,26 @@ impl ::protobuf::Message for SavedUserObject {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.identifier,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.identifier)?;
+                },
                 2 => {
                     ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.version)?;
-                }
+                },
                 3 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.metadata,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.metadata)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -1283,10 +1145,7 @@ impl ::protobuf::Message for SavedUserObject {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if !self.identifier.is_empty() {
             os.write_string(1, &self.identifier)?;
         }
@@ -1333,40 +1192,28 @@ impl ::protobuf::Message for SavedUserObject {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "identifier",
-                |m: &SavedUserObject| &m.identifier,
-                |m: &mut SavedUserObject| &mut m.identifier,
+                |m: &SavedUserObject| { &m.identifier },
+                |m: &mut SavedUserObject| { &mut m.identifier },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<super::versions::VersionDef>,
-                >(
-                    "version",
-                    |m: &SavedUserObject| &m.version,
-                    |m: &mut SavedUserObject| &mut m.version,
-                ),
-            );
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::versions::VersionDef>>(
+                "version",
+                |m: &SavedUserObject| { &m.version },
+                |m: &mut SavedUserObject| { &mut m.version },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "metadata",
-                |m: &SavedUserObject| &m.metadata,
-                |m: &mut SavedUserObject| &mut m.metadata,
+                |m: &SavedUserObject| { &m.metadata },
+                |m: &mut SavedUserObject| { &mut m.metadata },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedUserObject>(
                 "SavedUserObject",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -1398,7 +1245,7 @@ impl ::protobuf::reflect::ProtobufValue for SavedUserObject {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedAsset {
     // message fields
     pub asset_file_def_index: i32,
@@ -1420,6 +1267,7 @@ impl SavedAsset {
 
     // int32 asset_file_def_index = 1;
 
+
     pub fn get_asset_file_def_index(&self) -> i32 {
         self.asset_file_def_index
     }
@@ -1438,30 +1286,20 @@ impl ::protobuf::Message for SavedAsset {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int32()?;
                     self.asset_file_def_index = tmp;
-                }
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -1472,21 +1310,14 @@ impl ::protobuf::Message for SavedAsset {
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
         if self.asset_file_def_index != 0 {
-            my_size += ::protobuf::rt::value_size(
-                1,
-                self.asset_file_def_index,
-                ::protobuf::wire_format::WireTypeVarint,
-            );
+            my_size += ::protobuf::rt::value_size(1, self.asset_file_def_index, ::protobuf::wire_format::WireTypeVarint);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.asset_file_def_index != 0 {
             os.write_int32(1, self.asset_file_def_index)?;
         }
@@ -1525,22 +1356,18 @@ impl ::protobuf::Message for SavedAsset {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeInt32,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeInt32>(
                 "asset_file_def_index",
-                |m: &SavedAsset| &m.asset_file_def_index,
-                |m: &mut SavedAsset| &mut m.asset_file_def_index,
+                |m: &SavedAsset| { &m.asset_file_def_index },
+                |m: &mut SavedAsset| { &mut m.asset_file_def_index },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedAsset>(
                 "SavedAsset",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -1570,7 +1397,7 @@ impl ::protobuf::reflect::ProtobufValue for SavedAsset {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedFunction {
     // message fields
     pub concrete_functions: ::protobuf::RepeatedField<::std::string::String>,
@@ -1593,6 +1420,7 @@ impl SavedFunction {
 
     // repeated string concrete_functions = 1;
 
+
     pub fn get_concrete_functions(&self) -> &[::std::string::String] {
         &self.concrete_functions
     }
@@ -1606,26 +1434,20 @@ impl SavedFunction {
     }
 
     // Mutable pointer to the field.
-    pub fn mut_concrete_functions(
-        &mut self,
-    ) -> &mut ::protobuf::RepeatedField<::std::string::String> {
+    pub fn mut_concrete_functions(&mut self) -> &mut ::protobuf::RepeatedField<::std::string::String> {
         &mut self.concrete_functions
     }
 
     // Take field
     pub fn take_concrete_functions(&mut self) -> ::protobuf::RepeatedField<::std::string::String> {
-        ::std::mem::replace(
-            &mut self.concrete_functions,
-            ::protobuf::RepeatedField::new(),
-        )
+        ::std::mem::replace(&mut self.concrete_functions, ::protobuf::RepeatedField::new())
     }
 
     // .tensorflow.FunctionSpec function_spec = 2;
 
+
     pub fn get_function_spec(&self) -> &FunctionSpec {
-        self.function_spec
-            .as_ref()
-            .unwrap_or_else(|| <FunctionSpec as ::protobuf::Message>::default_instance())
+        self.function_spec.as_ref().unwrap_or_else(|| <FunctionSpec as ::protobuf::Message>::default_instance())
     }
     pub fn clear_function_spec(&mut self) {
         self.function_spec.clear();
@@ -1651,9 +1473,7 @@ impl SavedFunction {
 
     // Take field
     pub fn take_function_spec(&mut self) -> FunctionSpec {
-        self.function_spec
-            .take()
-            .unwrap_or_else(|| FunctionSpec::new())
+        self.function_spec.take().unwrap_or_else(|| FunctionSpec::new())
     }
 }
 
@@ -1663,39 +1483,23 @@ impl ::protobuf::Message for SavedFunction {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_repeated_string_into(
-                        wire_type,
-                        is,
-                        &mut self.concrete_functions,
-                    )?;
-                }
+                    ::protobuf::rt::read_repeated_string_into(wire_type, is, &mut self.concrete_functions)?;
+                },
                 2 => {
-                    ::protobuf::rt::read_singular_message_into(
-                        wire_type,
-                        is,
-                        &mut self.function_spec,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.function_spec)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -1707,7 +1511,7 @@ impl ::protobuf::Message for SavedFunction {
         let mut my_size = 0;
         for value in &self.concrete_functions {
             my_size += ::protobuf::rt::string_size(1, &value);
-        }
+        };
         if let Some(ref v) = self.function_spec.as_ref() {
             let len = v.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
@@ -1717,13 +1521,10 @@ impl ::protobuf::Message for SavedFunction {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         for v in &self.concrete_functions {
             os.write_string(1, &v)?;
-        }
+        };
         if let Some(ref v) = self.function_spec.as_ref() {
             os.write_tag(2, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
@@ -1764,34 +1565,23 @@ impl ::protobuf::Message for SavedFunction {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(
-                ::protobuf::reflect::accessor::make_repeated_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeString,
-                >(
-                    "concrete_functions",
-                    |m: &SavedFunction| &m.concrete_functions,
-                    |m: &mut SavedFunction| &mut m.concrete_functions,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<FunctionSpec>,
-                >(
-                    "function_spec",
-                    |m: &SavedFunction| &m.function_spec,
-                    |m: &mut SavedFunction| &mut m.function_spec,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                "concrete_functions",
+                |m: &SavedFunction| { &m.concrete_functions },
+                |m: &mut SavedFunction| { &mut m.concrete_functions },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<FunctionSpec>>(
+                "function_spec",
+                |m: &SavedFunction| { &m.function_spec },
+                |m: &mut SavedFunction| { &mut m.function_spec },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedFunction>(
                 "SavedFunction",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -1822,12 +1612,11 @@ impl ::protobuf::reflect::ProtobufValue for SavedFunction {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedConcreteFunction {
     // message fields
     pub bound_inputs: ::std::vec::Vec<i32>,
-    pub canonicalized_input_signature:
-        ::protobuf::SingularPtrField<super::struct_pb::StructuredValue>,
+    pub canonicalized_input_signature: ::protobuf::SingularPtrField<super::struct_pb::StructuredValue>,
     pub output_signature: ::protobuf::SingularPtrField<super::struct_pb::StructuredValue>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
@@ -1846,6 +1635,7 @@ impl SavedConcreteFunction {
     }
 
     // repeated int32 bound_inputs = 2;
+
 
     pub fn get_bound_inputs(&self) -> &[i32] {
         &self.bound_inputs
@@ -1871,12 +1661,9 @@ impl SavedConcreteFunction {
 
     // .tensorflow.StructuredValue canonicalized_input_signature = 3;
 
+
     pub fn get_canonicalized_input_signature(&self) -> &super::struct_pb::StructuredValue {
-        self.canonicalized_input_signature
-            .as_ref()
-            .unwrap_or_else(|| {
-                <super::struct_pb::StructuredValue as ::protobuf::Message>::default_instance()
-            })
+        self.canonicalized_input_signature.as_ref().unwrap_or_else(|| <super::struct_pb::StructuredValue as ::protobuf::Message>::default_instance())
     }
     pub fn clear_canonicalized_input_signature(&mut self) {
         self.canonicalized_input_signature.clear();
@@ -1902,17 +1689,14 @@ impl SavedConcreteFunction {
 
     // Take field
     pub fn take_canonicalized_input_signature(&mut self) -> super::struct_pb::StructuredValue {
-        self.canonicalized_input_signature
-            .take()
-            .unwrap_or_else(|| super::struct_pb::StructuredValue::new())
+        self.canonicalized_input_signature.take().unwrap_or_else(|| super::struct_pb::StructuredValue::new())
     }
 
     // .tensorflow.StructuredValue output_signature = 4;
 
+
     pub fn get_output_signature(&self) -> &super::struct_pb::StructuredValue {
-        self.output_signature.as_ref().unwrap_or_else(|| {
-            <super::struct_pb::StructuredValue as ::protobuf::Message>::default_instance()
-        })
+        self.output_signature.as_ref().unwrap_or_else(|| <super::struct_pb::StructuredValue as ::protobuf::Message>::default_instance())
     }
     pub fn clear_output_signature(&mut self) {
         self.output_signature.clear();
@@ -1938,9 +1722,7 @@ impl SavedConcreteFunction {
 
     // Take field
     pub fn take_output_signature(&mut self) -> super::struct_pb::StructuredValue {
-        self.output_signature
-            .take()
-            .unwrap_or_else(|| super::struct_pb::StructuredValue::new())
+        self.output_signature.take().unwrap_or_else(|| super::struct_pb::StructuredValue::new())
     }
 }
 
@@ -1950,51 +1732,31 @@ impl ::protobuf::Message for SavedConcreteFunction {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         for v in &self.output_signature {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 2 => {
-                    ::protobuf::rt::read_repeated_int32_into(
-                        wire_type,
-                        is,
-                        &mut self.bound_inputs,
-                    )?;
-                }
+                    ::protobuf::rt::read_repeated_int32_into(wire_type, is, &mut self.bound_inputs)?;
+                },
                 3 => {
-                    ::protobuf::rt::read_singular_message_into(
-                        wire_type,
-                        is,
-                        &mut self.canonicalized_input_signature,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.canonicalized_input_signature)?;
+                },
                 4 => {
-                    ::protobuf::rt::read_singular_message_into(
-                        wire_type,
-                        is,
-                        &mut self.output_signature,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.output_signature)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -2005,9 +1767,8 @@ impl ::protobuf::Message for SavedConcreteFunction {
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
         for value in &self.bound_inputs {
-            my_size +=
-                ::protobuf::rt::value_size(2, *value, ::protobuf::wire_format::WireTypeVarint);
-        }
+            my_size += ::protobuf::rt::value_size(2, *value, ::protobuf::wire_format::WireTypeVarint);
+        };
         if let Some(ref v) = self.canonicalized_input_signature.as_ref() {
             let len = v.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
@@ -2021,13 +1782,10 @@ impl ::protobuf::Message for SavedConcreteFunction {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         for v in &self.bound_inputs {
             os.write_int32(2, *v)?;
-        }
+        };
         if let Some(ref v) = self.canonicalized_input_signature.as_ref() {
             os.write_tag(3, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
@@ -2073,49 +1831,34 @@ impl ::protobuf::Message for SavedConcreteFunction {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_vec_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeInt32,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_vec_accessor::<_, ::protobuf::types::ProtobufTypeInt32>(
                 "bound_inputs",
-                |m: &SavedConcreteFunction| &m.bound_inputs,
-                |m: &mut SavedConcreteFunction| &mut m.bound_inputs,
+                |m: &SavedConcreteFunction| { &m.bound_inputs },
+                |m: &mut SavedConcreteFunction| { &mut m.bound_inputs },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<super::struct_pb::StructuredValue>,
-                >(
-                    "canonicalized_input_signature",
-                    |m: &SavedConcreteFunction| &m.canonicalized_input_signature,
-                    |m: &mut SavedConcreteFunction| &mut m.canonicalized_input_signature,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<super::struct_pb::StructuredValue>,
-                >(
-                    "output_signature",
-                    |m: &SavedConcreteFunction| &m.output_signature,
-                    |m: &mut SavedConcreteFunction| &mut m.output_signature,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::struct_pb::StructuredValue>>(
+                "canonicalized_input_signature",
+                |m: &SavedConcreteFunction| { &m.canonicalized_input_signature },
+                |m: &mut SavedConcreteFunction| { &mut m.canonicalized_input_signature },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::struct_pb::StructuredValue>>(
+                "output_signature",
+                |m: &SavedConcreteFunction| { &m.output_signature },
+                |m: &mut SavedConcreteFunction| { &mut m.output_signature },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedConcreteFunction>(
                 "SavedConcreteFunction",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
 
     fn default_instance() -> &'static SavedConcreteFunction {
-        static instance: ::protobuf::rt::LazyV2<SavedConcreteFunction> =
-            ::protobuf::rt::LazyV2::INIT;
+        static instance: ::protobuf::rt::LazyV2<SavedConcreteFunction> = ::protobuf::rt::LazyV2::INIT;
         instance.get(SavedConcreteFunction::new)
     }
 }
@@ -2141,7 +1884,7 @@ impl ::protobuf::reflect::ProtobufValue for SavedConcreteFunction {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedBareConcreteFunction {
     // message fields
     pub concrete_function_name: ::std::string::String,
@@ -2165,6 +1908,7 @@ impl SavedBareConcreteFunction {
 
     // string concrete_function_name = 1;
 
+
     pub fn get_concrete_function_name(&self) -> &str {
         &self.concrete_function_name
     }
@@ -2185,13 +1929,11 @@ impl SavedBareConcreteFunction {
 
     // Take field
     pub fn take_concrete_function_name(&mut self) -> ::std::string::String {
-        ::std::mem::replace(
-            &mut self.concrete_function_name,
-            ::std::string::String::new(),
-        )
+        ::std::mem::replace(&mut self.concrete_function_name, ::std::string::String::new())
     }
 
     // repeated string argument_keywords = 2;
+
 
     pub fn get_argument_keywords(&self) -> &[::std::string::String] {
         &self.argument_keywords
@@ -2206,21 +1948,17 @@ impl SavedBareConcreteFunction {
     }
 
     // Mutable pointer to the field.
-    pub fn mut_argument_keywords(
-        &mut self,
-    ) -> &mut ::protobuf::RepeatedField<::std::string::String> {
+    pub fn mut_argument_keywords(&mut self) -> &mut ::protobuf::RepeatedField<::std::string::String> {
         &mut self.argument_keywords
     }
 
     // Take field
     pub fn take_argument_keywords(&mut self) -> ::protobuf::RepeatedField<::std::string::String> {
-        ::std::mem::replace(
-            &mut self.argument_keywords,
-            ::protobuf::RepeatedField::new(),
-        )
+        ::std::mem::replace(&mut self.argument_keywords, ::protobuf::RepeatedField::new())
     }
 
     // int64 allowed_positional_arguments = 3;
+
 
     pub fn get_allowed_positional_arguments(&self) -> i64 {
         self.allowed_positional_arguments
@@ -2240,44 +1978,26 @@ impl ::protobuf::Message for SavedBareConcreteFunction {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.concrete_function_name,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.concrete_function_name)?;
+                },
                 2 => {
-                    ::protobuf::rt::read_repeated_string_into(
-                        wire_type,
-                        is,
-                        &mut self.argument_keywords,
-                    )?;
-                }
+                    ::protobuf::rt::read_repeated_string_into(wire_type, is, &mut self.argument_keywords)?;
+                },
                 3 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int64()?;
                     self.allowed_positional_arguments = tmp;
-                }
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -2292,29 +2012,22 @@ impl ::protobuf::Message for SavedBareConcreteFunction {
         }
         for value in &self.argument_keywords {
             my_size += ::protobuf::rt::string_size(2, &value);
-        }
+        };
         if self.allowed_positional_arguments != 0 {
-            my_size += ::protobuf::rt::value_size(
-                3,
-                self.allowed_positional_arguments,
-                ::protobuf::wire_format::WireTypeVarint,
-            );
+            my_size += ::protobuf::rt::value_size(3, self.allowed_positional_arguments, ::protobuf::wire_format::WireTypeVarint);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if !self.concrete_function_name.is_empty() {
             os.write_string(1, &self.concrete_function_name)?;
         }
         for v in &self.argument_keywords {
             os.write_string(2, &v)?;
-        }
+        };
         if self.allowed_positional_arguments != 0 {
             os.write_int64(3, self.allowed_positional_arguments)?;
         }
@@ -2353,47 +2066,34 @@ impl ::protobuf::Message for SavedBareConcreteFunction {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "concrete_function_name",
-                |m: &SavedBareConcreteFunction| &m.concrete_function_name,
-                |m: &mut SavedBareConcreteFunction| &mut m.concrete_function_name,
+                |m: &SavedBareConcreteFunction| { &m.concrete_function_name },
+                |m: &mut SavedBareConcreteFunction| { &mut m.concrete_function_name },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_repeated_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeString,
-                >(
-                    "argument_keywords",
-                    |m: &SavedBareConcreteFunction| &m.argument_keywords,
-                    |m: &mut SavedBareConcreteFunction| &mut m.argument_keywords,
-                ),
-            );
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeInt64,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                "argument_keywords",
+                |m: &SavedBareConcreteFunction| { &m.argument_keywords },
+                |m: &mut SavedBareConcreteFunction| { &mut m.argument_keywords },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeInt64>(
                 "allowed_positional_arguments",
-                |m: &SavedBareConcreteFunction| &m.allowed_positional_arguments,
-                |m: &mut SavedBareConcreteFunction| &mut m.allowed_positional_arguments,
+                |m: &SavedBareConcreteFunction| { &m.allowed_positional_arguments },
+                |m: &mut SavedBareConcreteFunction| { &mut m.allowed_positional_arguments },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedBareConcreteFunction>(
                 "SavedBareConcreteFunction",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
 
     fn default_instance() -> &'static SavedBareConcreteFunction {
-        static instance: ::protobuf::rt::LazyV2<SavedBareConcreteFunction> =
-            ::protobuf::rt::LazyV2::INIT;
+        static instance: ::protobuf::rt::LazyV2<SavedBareConcreteFunction> = ::protobuf::rt::LazyV2::INIT;
         instance.get(SavedBareConcreteFunction::new)
     }
 }
@@ -2419,7 +2119,7 @@ impl ::protobuf::reflect::ProtobufValue for SavedBareConcreteFunction {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedConstant {
     // message fields
     pub operation: ::std::string::String,
@@ -2440,6 +2140,7 @@ impl SavedConstant {
     }
 
     // string operation = 1;
+
 
     pub fn get_operation(&self) -> &str {
         &self.operation
@@ -2470,28 +2171,16 @@ impl ::protobuf::Message for SavedConstant {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.operation,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.operation)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -2509,10 +2198,7 @@ impl ::protobuf::Message for SavedConstant {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if !self.operation.is_empty() {
             os.write_string(1, &self.operation)?;
         }
@@ -2551,22 +2237,18 @@ impl ::protobuf::Message for SavedConstant {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "operation",
-                |m: &SavedConstant| &m.operation,
-                |m: &mut SavedConstant| &mut m.operation,
+                |m: &SavedConstant| { &m.operation },
+                |m: &mut SavedConstant| { &mut m.operation },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedConstant>(
                 "SavedConstant",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -2596,7 +2278,7 @@ impl ::protobuf::reflect::ProtobufValue for SavedConstant {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedVariable {
     // message fields
     pub dtype: super::types::DataType,
@@ -2623,6 +2305,7 @@ impl SavedVariable {
 
     // .tensorflow.DataType dtype = 1;
 
+
     pub fn get_dtype(&self) -> super::types::DataType {
         self.dtype
     }
@@ -2637,10 +2320,9 @@ impl SavedVariable {
 
     // .tensorflow.TensorShapeProto shape = 2;
 
+
     pub fn get_shape(&self) -> &super::tensor_shape::TensorShapeProto {
-        self.shape.as_ref().unwrap_or_else(|| {
-            <super::tensor_shape::TensorShapeProto as ::protobuf::Message>::default_instance()
-        })
+        self.shape.as_ref().unwrap_or_else(|| <super::tensor_shape::TensorShapeProto as ::protobuf::Message>::default_instance())
     }
     pub fn clear_shape(&mut self) {
         self.shape.clear();
@@ -2666,12 +2348,11 @@ impl SavedVariable {
 
     // Take field
     pub fn take_shape(&mut self) -> super::tensor_shape::TensorShapeProto {
-        self.shape
-            .take()
-            .unwrap_or_else(|| super::tensor_shape::TensorShapeProto::new())
+        self.shape.take().unwrap_or_else(|| super::tensor_shape::TensorShapeProto::new())
     }
 
     // bool trainable = 3;
+
 
     pub fn get_trainable(&self) -> bool {
         self.trainable
@@ -2687,12 +2368,12 @@ impl SavedVariable {
 
     // .tensorflow.VariableSynchronization synchronization = 4;
 
+
     pub fn get_synchronization(&self) -> super::variable::VariableSynchronization {
         self.synchronization
     }
     pub fn clear_synchronization(&mut self) {
-        self.synchronization =
-            super::variable::VariableSynchronization::VARIABLE_SYNCHRONIZATION_AUTO;
+        self.synchronization = super::variable::VariableSynchronization::VARIABLE_SYNCHRONIZATION_AUTO;
     }
 
     // Param is passed by value, moved
@@ -2701,6 +2382,7 @@ impl SavedVariable {
     }
 
     // .tensorflow.VariableAggregation aggregation = 5;
+
 
     pub fn get_aggregation(&self) -> super::variable::VariableAggregation {
         self.aggregation
@@ -2715,6 +2397,7 @@ impl SavedVariable {
     }
 
     // string name = 6;
+
 
     pub fn get_name(&self) -> &str {
         &self.name
@@ -2746,65 +2429,39 @@ impl ::protobuf::Message for SavedVariable {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
-                1 => ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(
-                    wire_type,
-                    is,
-                    &mut self.dtype,
-                    1,
-                    &mut self.unknown_fields,
-                )?,
+                1 => {
+                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.dtype, 1, &mut self.unknown_fields)?
+                },
                 2 => {
                     ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.shape)?;
-                }
+                },
                 3 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_bool()?;
                     self.trainable = tmp;
-                }
-                4 => ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(
-                    wire_type,
-                    is,
-                    &mut self.synchronization,
-                    4,
-                    &mut self.unknown_fields,
-                )?,
-                5 => ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(
-                    wire_type,
-                    is,
-                    &mut self.aggregation,
-                    5,
-                    &mut self.unknown_fields,
-                )?,
+                },
+                4 => {
+                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.synchronization, 4, &mut self.unknown_fields)?
+                },
+                5 => {
+                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.aggregation, 5, &mut self.unknown_fields)?
+                },
                 6 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.name,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.name)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -2824,9 +2481,7 @@ impl ::protobuf::Message for SavedVariable {
         if self.trainable != false {
             my_size += 2;
         }
-        if self.synchronization
-            != super::variable::VariableSynchronization::VARIABLE_SYNCHRONIZATION_AUTO
-        {
+        if self.synchronization != super::variable::VariableSynchronization::VARIABLE_SYNCHRONIZATION_AUTO {
             my_size += ::protobuf::rt::enum_size(4, self.synchronization);
         }
         if self.aggregation != super::variable::VariableAggregation::VARIABLE_AGGREGATION_NONE {
@@ -2840,10 +2495,7 @@ impl ::protobuf::Message for SavedVariable {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.dtype != super::types::DataType::DT_INVALID {
             os.write_enum(1, ::protobuf::ProtobufEnum::value(&self.dtype))?;
         }
@@ -2855,9 +2507,7 @@ impl ::protobuf::Message for SavedVariable {
         if self.trainable != false {
             os.write_bool(3, self.trainable)?;
         }
-        if self.synchronization
-            != super::variable::VariableSynchronization::VARIABLE_SYNCHRONIZATION_AUTO
-        {
+        if self.synchronization != super::variable::VariableSynchronization::VARIABLE_SYNCHRONIZATION_AUTO {
             os.write_enum(4, ::protobuf::ProtobufEnum::value(&self.synchronization))?;
         }
         if self.aggregation != super::variable::VariableAggregation::VARIABLE_AGGREGATION_NONE {
@@ -2901,64 +2551,43 @@ impl ::protobuf::Message for SavedVariable {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeEnum<super::types::DataType>,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<super::types::DataType>>(
                 "dtype",
-                |m: &SavedVariable| &m.dtype,
-                |m: &mut SavedVariable| &mut m.dtype,
+                |m: &SavedVariable| { &m.dtype },
+                |m: &mut SavedVariable| { &mut m.dtype },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<super::tensor_shape::TensorShapeProto>,
-                >(
-                    "shape",
-                    |m: &SavedVariable| &m.shape,
-                    |m: &mut SavedVariable| &mut m.shape,
-                ),
-            );
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeBool,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::tensor_shape::TensorShapeProto>>(
+                "shape",
+                |m: &SavedVariable| { &m.shape },
+                |m: &mut SavedVariable| { &mut m.shape },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeBool>(
                 "trainable",
-                |m: &SavedVariable| &m.trainable,
-                |m: &mut SavedVariable| &mut m.trainable,
+                |m: &SavedVariable| { &m.trainable },
+                |m: &mut SavedVariable| { &mut m.trainable },
             ));
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeEnum<super::variable::VariableSynchronization>,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<super::variable::VariableSynchronization>>(
                 "synchronization",
-                |m: &SavedVariable| &m.synchronization,
-                |m: &mut SavedVariable| &mut m.synchronization,
+                |m: &SavedVariable| { &m.synchronization },
+                |m: &mut SavedVariable| { &mut m.synchronization },
             ));
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeEnum<super::variable::VariableAggregation>,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<super::variable::VariableAggregation>>(
                 "aggregation",
-                |m: &SavedVariable| &m.aggregation,
-                |m: &mut SavedVariable| &mut m.aggregation,
+                |m: &SavedVariable| { &m.aggregation },
+                |m: &mut SavedVariable| { &mut m.aggregation },
             ));
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "name",
-                |m: &SavedVariable| &m.name,
-                |m: &mut SavedVariable| &mut m.name,
+                |m: &SavedVariable| { &m.name },
+                |m: &mut SavedVariable| { &mut m.name },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedVariable>(
                 "SavedVariable",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -2974,8 +2603,7 @@ impl ::protobuf::Clear for SavedVariable {
         self.dtype = super::types::DataType::DT_INVALID;
         self.shape.clear();
         self.trainable = false;
-        self.synchronization =
-            super::variable::VariableSynchronization::VARIABLE_SYNCHRONIZATION_AUTO;
+        self.synchronization = super::variable::VariableSynchronization::VARIABLE_SYNCHRONIZATION_AUTO;
         self.aggregation = super::variable::VariableAggregation::VARIABLE_AGGREGATION_NONE;
         self.name.clear();
         self.unknown_fields.clear();
@@ -2994,7 +2622,7 @@ impl ::protobuf::reflect::ProtobufValue for SavedVariable {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct FunctionSpec {
     // message fields
     pub fullargspec: ::protobuf::SingularPtrField<super::struct_pb::StructuredValue>,
@@ -3018,10 +2646,9 @@ impl FunctionSpec {
 
     // .tensorflow.StructuredValue fullargspec = 1;
 
+
     pub fn get_fullargspec(&self) -> &super::struct_pb::StructuredValue {
-        self.fullargspec.as_ref().unwrap_or_else(|| {
-            <super::struct_pb::StructuredValue as ::protobuf::Message>::default_instance()
-        })
+        self.fullargspec.as_ref().unwrap_or_else(|| <super::struct_pb::StructuredValue as ::protobuf::Message>::default_instance())
     }
     pub fn clear_fullargspec(&mut self) {
         self.fullargspec.clear();
@@ -3047,12 +2674,11 @@ impl FunctionSpec {
 
     // Take field
     pub fn take_fullargspec(&mut self) -> super::struct_pb::StructuredValue {
-        self.fullargspec
-            .take()
-            .unwrap_or_else(|| super::struct_pb::StructuredValue::new())
+        self.fullargspec.take().unwrap_or_else(|| super::struct_pb::StructuredValue::new())
     }
 
     // bool is_method = 2;
+
 
     pub fn get_is_method(&self) -> bool {
         self.is_method
@@ -3068,10 +2694,9 @@ impl FunctionSpec {
 
     // .tensorflow.StructuredValue input_signature = 5;
 
+
     pub fn get_input_signature(&self) -> &super::struct_pb::StructuredValue {
-        self.input_signature.as_ref().unwrap_or_else(|| {
-            <super::struct_pb::StructuredValue as ::protobuf::Message>::default_instance()
-        })
+        self.input_signature.as_ref().unwrap_or_else(|| <super::struct_pb::StructuredValue as ::protobuf::Message>::default_instance())
     }
     pub fn clear_input_signature(&mut self) {
         self.input_signature.clear();
@@ -3097,9 +2722,7 @@ impl FunctionSpec {
 
     // Take field
     pub fn take_input_signature(&mut self) -> super::struct_pb::StructuredValue {
-        self.input_signature
-            .take()
-            .unwrap_or_else(|| super::struct_pb::StructuredValue::new())
+        self.input_signature.take().unwrap_or_else(|| super::struct_pb::StructuredValue::new())
     }
 }
 
@@ -3109,53 +2732,35 @@ impl ::protobuf::Message for FunctionSpec {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         for v in &self.input_signature {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_message_into(
-                        wire_type,
-                        is,
-                        &mut self.fullargspec,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.fullargspec)?;
+                },
                 2 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_bool()?;
                     self.is_method = tmp;
-                }
+                },
                 5 => {
-                    ::protobuf::rt::read_singular_message_into(
-                        wire_type,
-                        is,
-                        &mut self.input_signature,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.input_signature)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -3181,10 +2786,7 @@ impl ::protobuf::Message for FunctionSpec {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if let Some(ref v) = self.fullargspec.as_ref() {
             os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
@@ -3233,42 +2835,28 @@ impl ::protobuf::Message for FunctionSpec {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<super::struct_pb::StructuredValue>,
-                >(
-                    "fullargspec",
-                    |m: &FunctionSpec| &m.fullargspec,
-                    |m: &mut FunctionSpec| &mut m.fullargspec,
-                ),
-            );
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeBool,
-            >(
-                "is_method",
-                |m: &FunctionSpec| &m.is_method,
-                |m: &mut FunctionSpec| &mut m.is_method,
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::struct_pb::StructuredValue>>(
+                "fullargspec",
+                |m: &FunctionSpec| { &m.fullargspec },
+                |m: &mut FunctionSpec| { &mut m.fullargspec },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<super::struct_pb::StructuredValue>,
-                >(
-                    "input_signature",
-                    |m: &FunctionSpec| &m.input_signature,
-                    |m: &mut FunctionSpec| &mut m.input_signature,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeBool>(
+                "is_method",
+                |m: &FunctionSpec| { &m.is_method },
+                |m: &mut FunctionSpec| { &mut m.is_method },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::struct_pb::StructuredValue>>(
+                "input_signature",
+                |m: &FunctionSpec| { &m.input_signature },
+                |m: &mut FunctionSpec| { &mut m.input_signature },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<FunctionSpec>(
                 "FunctionSpec",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -3300,7 +2888,7 @@ impl ::protobuf::reflect::ProtobufValue for FunctionSpec {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedResource {
     // message fields
     pub device: ::std::string::String,
@@ -3321,6 +2909,7 @@ impl SavedResource {
     }
 
     // string device = 1;
+
 
     pub fn get_device(&self) -> &str {
         &self.device
@@ -3351,28 +2940,16 @@ impl ::protobuf::Message for SavedResource {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.device,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.device)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -3390,10 +2967,7 @@ impl ::protobuf::Message for SavedResource {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if !self.device.is_empty() {
             os.write_string(1, &self.device)?;
         }
@@ -3432,22 +3006,18 @@ impl ::protobuf::Message for SavedResource {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "device",
-                |m: &SavedResource| &m.device,
-                |m: &mut SavedResource| &mut m.device,
+                |m: &SavedResource| { &m.device },
+                |m: &mut SavedResource| { &mut m.device },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedResource>(
                 "SavedResource",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -3533,14 +3103,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ceB\x03\xf8\x01\x01b\x06proto3\
 ";
 
-static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<
-    ::protobuf::descriptor::FileDescriptorProto,
-> = ::protobuf::rt::LazyV2::INIT;
+static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::rt::LazyV2::INIT;
 
 fn parse_descriptor_proto() -> ::protobuf::descriptor::FileDescriptorProto {
     ::protobuf::parse_from_bytes(file_descriptor_proto_data).unwrap()
 }
 
 pub fn file_descriptor_proto() -> &'static ::protobuf::descriptor::FileDescriptorProto {
-    file_descriptor_proto_lazy.get(|| parse_descriptor_proto())
+    file_descriptor_proto_lazy.get(|| {
+        parse_descriptor_proto()
+    })
 }

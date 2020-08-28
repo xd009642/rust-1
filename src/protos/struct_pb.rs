@@ -23,7 +23,7 @@
 /// of protobuf runtime.
 // const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_2_17_0;
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct StructuredValue {
     // message oneof groups
     pub kind: ::std::option::Option<StructuredValue_oneof_kind>,
@@ -38,7 +38,7 @@ impl<'a> ::std::default::Default for &'a StructuredValue {
     }
 }
 
-#[derive(Clone, PartialEq, Debug)]
+#[derive(Clone,PartialEq,Debug)]
 pub enum StructuredValue_oneof_kind {
     none_value(NoneValue),
     float64_value(f64),
@@ -61,6 +61,7 @@ impl StructuredValue {
     }
 
     // .tensorflow.NoneValue none_value = 1;
+
 
     pub fn get_none_value(&self) -> &NoneValue {
         match self.kind {
@@ -88,9 +89,7 @@ impl StructuredValue {
     pub fn mut_none_value(&mut self) -> &mut NoneValue {
         if let ::std::option::Option::Some(StructuredValue_oneof_kind::none_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::none_value(
-                NoneValue::new(),
-            ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::none_value(NoneValue::new()));
         }
         match self.kind {
             ::std::option::Option::Some(StructuredValue_oneof_kind::none_value(ref mut v)) => v,
@@ -111,6 +110,7 @@ impl StructuredValue {
     }
 
     // double float64_value = 11;
+
 
     pub fn get_float64_value(&self) -> f64 {
         match self.kind {
@@ -136,6 +136,7 @@ impl StructuredValue {
 
     // sint64 int64_value = 12;
 
+
     pub fn get_int64_value(&self) -> i64 {
         match self.kind {
             ::std::option::Option::Some(StructuredValue_oneof_kind::int64_value(v)) => v,
@@ -159,6 +160,7 @@ impl StructuredValue {
     }
 
     // string string_value = 13;
+
 
     pub fn get_string_value(&self) -> &str {
         match self.kind {
@@ -184,12 +186,9 @@ impl StructuredValue {
 
     // Mutable pointer to the field.
     pub fn mut_string_value(&mut self) -> &mut ::std::string::String {
-        if let ::std::option::Option::Some(StructuredValue_oneof_kind::string_value(_)) = self.kind
-        {
+        if let ::std::option::Option::Some(StructuredValue_oneof_kind::string_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::string_value(
-                ::std::string::String::new(),
-            ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::string_value(::std::string::String::new()));
         }
         match self.kind {
             ::std::option::Option::Some(StructuredValue_oneof_kind::string_value(ref mut v)) => v,
@@ -210,6 +209,7 @@ impl StructuredValue {
     }
 
     // bool bool_value = 14;
+
 
     pub fn get_bool_value(&self) -> bool {
         match self.kind {
@@ -235,6 +235,7 @@ impl StructuredValue {
 
     // .tensorflow.TensorShapeProto tensor_shape_value = 31;
 
+
     pub fn get_tensor_shape_value(&self) -> &super::tensor_shape::TensorShapeProto {
         match self.kind {
             ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_shape_value(ref v)) => v,
@@ -259,19 +260,12 @@ impl StructuredValue {
 
     // Mutable pointer to the field.
     pub fn mut_tensor_shape_value(&mut self) -> &mut super::tensor_shape::TensorShapeProto {
-        if let ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_shape_value(_)) =
-            self.kind
-        {
+        if let ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_shape_value(_)) = self.kind {
         } else {
-            self.kind =
-                ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_shape_value(
-                    super::tensor_shape::TensorShapeProto::new(),
-                ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_shape_value(super::tensor_shape::TensorShapeProto::new()));
         }
         match self.kind {
-            ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_shape_value(
-                ref mut v,
-            )) => v,
+            ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_shape_value(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -289,6 +283,7 @@ impl StructuredValue {
     }
 
     // .tensorflow.DataType tensor_dtype_value = 32;
+
 
     pub fn get_tensor_dtype_value(&self) -> super::types::DataType {
         match self.kind {
@@ -314,6 +309,7 @@ impl StructuredValue {
 
     // .tensorflow.TensorSpecProto tensor_spec_value = 33;
 
+
     pub fn get_tensor_spec_value(&self) -> &TensorSpecProto {
         match self.kind {
             ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_spec_value(ref v)) => v,
@@ -338,18 +334,12 @@ impl StructuredValue {
 
     // Mutable pointer to the field.
     pub fn mut_tensor_spec_value(&mut self) -> &mut TensorSpecProto {
-        if let ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_spec_value(_)) =
-            self.kind
-        {
+        if let ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_spec_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_spec_value(
-                TensorSpecProto::new(),
-            ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_spec_value(TensorSpecProto::new()));
         }
         match self.kind {
-            ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_spec_value(
-                ref mut v,
-            )) => v,
+            ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_spec_value(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -367,6 +357,7 @@ impl StructuredValue {
     }
 
     // .tensorflow.TypeSpecProto type_spec_value = 34;
+
 
     pub fn get_type_spec_value(&self) -> &TypeSpecProto {
         match self.kind {
@@ -392,18 +383,12 @@ impl StructuredValue {
 
     // Mutable pointer to the field.
     pub fn mut_type_spec_value(&mut self) -> &mut TypeSpecProto {
-        if let ::std::option::Option::Some(StructuredValue_oneof_kind::type_spec_value(_)) =
-            self.kind
-        {
+        if let ::std::option::Option::Some(StructuredValue_oneof_kind::type_spec_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::type_spec_value(
-                TypeSpecProto::new(),
-            ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::type_spec_value(TypeSpecProto::new()));
         }
         match self.kind {
-            ::std::option::Option::Some(StructuredValue_oneof_kind::type_spec_value(ref mut v)) => {
-                v
-            }
+            ::std::option::Option::Some(StructuredValue_oneof_kind::type_spec_value(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -421,6 +406,7 @@ impl StructuredValue {
     }
 
     // .tensorflow.ListValue list_value = 51;
+
 
     pub fn get_list_value(&self) -> &ListValue {
         match self.kind {
@@ -448,9 +434,7 @@ impl StructuredValue {
     pub fn mut_list_value(&mut self) -> &mut ListValue {
         if let ::std::option::Option::Some(StructuredValue_oneof_kind::list_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::list_value(
-                ListValue::new(),
-            ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::list_value(ListValue::new()));
         }
         match self.kind {
             ::std::option::Option::Some(StructuredValue_oneof_kind::list_value(ref mut v)) => v,
@@ -471,6 +455,7 @@ impl StructuredValue {
     }
 
     // .tensorflow.TupleValue tuple_value = 52;
+
 
     pub fn get_tuple_value(&self) -> &TupleValue {
         match self.kind {
@@ -498,9 +483,7 @@ impl StructuredValue {
     pub fn mut_tuple_value(&mut self) -> &mut TupleValue {
         if let ::std::option::Option::Some(StructuredValue_oneof_kind::tuple_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tuple_value(
-                TupleValue::new(),
-            ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tuple_value(TupleValue::new()));
         }
         match self.kind {
             ::std::option::Option::Some(StructuredValue_oneof_kind::tuple_value(ref mut v)) => v,
@@ -521,6 +504,7 @@ impl StructuredValue {
     }
 
     // .tensorflow.DictValue dict_value = 53;
+
 
     pub fn get_dict_value(&self) -> &DictValue {
         match self.kind {
@@ -548,9 +532,7 @@ impl StructuredValue {
     pub fn mut_dict_value(&mut self) -> &mut DictValue {
         if let ::std::option::Option::Some(StructuredValue_oneof_kind::dict_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::dict_value(
-                DictValue::new(),
-            ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::dict_value(DictValue::new()));
         }
         match self.kind {
             ::std::option::Option::Some(StructuredValue_oneof_kind::dict_value(ref mut v)) => v,
@@ -571,6 +553,7 @@ impl StructuredValue {
     }
 
     // .tensorflow.NamedTupleValue named_tuple_value = 54;
+
 
     pub fn get_named_tuple_value(&self) -> &NamedTupleValue {
         match self.kind {
@@ -596,18 +579,12 @@ impl StructuredValue {
 
     // Mutable pointer to the field.
     pub fn mut_named_tuple_value(&mut self) -> &mut NamedTupleValue {
-        if let ::std::option::Option::Some(StructuredValue_oneof_kind::named_tuple_value(_)) =
-            self.kind
-        {
+        if let ::std::option::Option::Some(StructuredValue_oneof_kind::named_tuple_value(_)) = self.kind {
         } else {
-            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::named_tuple_value(
-                NamedTupleValue::new(),
-            ));
+            self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::named_tuple_value(NamedTupleValue::new()));
         }
         match self.kind {
-            ::std::option::Option::Some(StructuredValue_oneof_kind::named_tuple_value(
-                ref mut v,
-            )) => v,
+            ::std::option::Option::Some(StructuredValue_oneof_kind::named_tuple_value(ref mut v)) => v,
             _ => panic!(),
         }
     }
@@ -670,151 +647,91 @@ impl ::protobuf::Message for StructuredValue {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::none_value(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::none_value(is.read_message()?));
+                },
                 11 => {
                     if wire_type != ::protobuf::wire_format::WireTypeFixed64 {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::float64_value(is.read_double()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::float64_value(is.read_double()?));
+                },
                 12 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::int64_value(is.read_sint64()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::int64_value(is.read_sint64()?));
+                },
                 13 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::string_value(is.read_string()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::string_value(is.read_string()?));
+                },
                 14 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::bool_value(is.read_bool()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::bool_value(is.read_bool()?));
+                },
                 31 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::tensor_shape_value(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_shape_value(is.read_message()?));
+                },
                 32 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::tensor_dtype_value(is.read_enum()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_dtype_value(is.read_enum()?));
+                },
                 33 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::tensor_spec_value(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tensor_spec_value(is.read_message()?));
+                },
                 34 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::type_spec_value(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::type_spec_value(is.read_message()?));
+                },
                 51 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::list_value(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::list_value(is.read_message()?));
+                },
                 52 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::tuple_value(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::tuple_value(is.read_message()?));
+                },
                 53 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::dict_value(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::dict_value(is.read_message()?));
+                },
                 54 => {
                     if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.kind = ::std::option::Option::Some(
-                        StructuredValue_oneof_kind::named_tuple_value(is.read_message()?),
-                    );
-                }
+                    self.kind = ::std::option::Option::Some(StructuredValue_oneof_kind::named_tuple_value(is.read_message()?));
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -829,50 +746,50 @@ impl ::protobuf::Message for StructuredValue {
                 &StructuredValue_oneof_kind::none_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &StructuredValue_oneof_kind::float64_value(v) => {
                     my_size += 9;
-                }
+                },
                 &StructuredValue_oneof_kind::int64_value(v) => {
                     my_size += ::protobuf::rt::value_varint_zigzag_size(12, v);
-                }
+                },
                 &StructuredValue_oneof_kind::string_value(ref v) => {
                     my_size += ::protobuf::rt::string_size(13, &v);
-                }
+                },
                 &StructuredValue_oneof_kind::bool_value(v) => {
                     my_size += 2;
-                }
+                },
                 &StructuredValue_oneof_kind::tensor_shape_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &StructuredValue_oneof_kind::tensor_dtype_value(v) => {
                     my_size += ::protobuf::rt::enum_size(32, v);
-                }
+                },
                 &StructuredValue_oneof_kind::tensor_spec_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &StructuredValue_oneof_kind::type_spec_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &StructuredValue_oneof_kind::list_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &StructuredValue_oneof_kind::tuple_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &StructuredValue_oneof_kind::dict_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
                 &StructuredValue_oneof_kind::named_tuple_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-                }
+                },
             };
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
@@ -880,67 +797,64 @@ impl ::protobuf::Message for StructuredValue {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if let ::std::option::Option::Some(ref v) = self.kind {
             match v {
                 &StructuredValue_oneof_kind::none_value(ref v) => {
                     os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &StructuredValue_oneof_kind::float64_value(v) => {
                     os.write_double(11, v)?;
-                }
+                },
                 &StructuredValue_oneof_kind::int64_value(v) => {
                     os.write_sint64(12, v)?;
-                }
+                },
                 &StructuredValue_oneof_kind::string_value(ref v) => {
                     os.write_string(13, v)?;
-                }
+                },
                 &StructuredValue_oneof_kind::bool_value(v) => {
                     os.write_bool(14, v)?;
-                }
+                },
                 &StructuredValue_oneof_kind::tensor_shape_value(ref v) => {
                     os.write_tag(31, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &StructuredValue_oneof_kind::tensor_dtype_value(v) => {
                     os.write_enum(32, ::protobuf::ProtobufEnum::value(&v))?;
-                }
+                },
                 &StructuredValue_oneof_kind::tensor_spec_value(ref v) => {
                     os.write_tag(33, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &StructuredValue_oneof_kind::type_spec_value(ref v) => {
                     os.write_tag(34, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &StructuredValue_oneof_kind::list_value(ref v) => {
                     os.write_tag(51, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &StructuredValue_oneof_kind::tuple_value(ref v) => {
                     os.write_tag(52, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &StructuredValue_oneof_kind::dict_value(ref v) => {
                     os.write_tag(53, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
                 &StructuredValue_oneof_kind::named_tuple_value(ref v) => {
                     os.write_tag(54, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
-                }
+                },
             };
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
@@ -978,111 +892,78 @@ impl ::protobuf::Message for StructuredValue {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_message_accessor::<_, NoneValue>(
-                    "none_value",
-                    StructuredValue::has_none_value,
-                    StructuredValue::get_none_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_f64_accessor::<_>(
-                    "float64_value",
-                    StructuredValue::has_float64_value,
-                    StructuredValue::get_float64_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_i64_accessor::<_>(
-                    "int64_value",
-                    StructuredValue::has_int64_value,
-                    StructuredValue::get_int64_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_string_accessor::<_>(
-                    "string_value",
-                    StructuredValue::has_string_value,
-                    StructuredValue::get_string_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_bool_accessor::<_>(
-                    "bool_value",
-                    StructuredValue::has_bool_value,
-                    StructuredValue::get_bool_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_message_accessor::<
-                    _,
-                    super::tensor_shape::TensorShapeProto,
-                >(
-                    "tensor_shape_value",
-                    StructuredValue::has_tensor_shape_value,
-                    StructuredValue::get_tensor_shape_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_enum_accessor::<
-                    _,
-                    super::types::DataType,
-                >(
-                    "tensor_dtype_value",
-                    StructuredValue::has_tensor_dtype_value,
-                    StructuredValue::get_tensor_dtype_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_message_accessor::<_, TensorSpecProto>(
-                    "tensor_spec_value",
-                    StructuredValue::has_tensor_spec_value,
-                    StructuredValue::get_tensor_spec_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_message_accessor::<_, TypeSpecProto>(
-                    "type_spec_value",
-                    StructuredValue::has_type_spec_value,
-                    StructuredValue::get_type_spec_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_message_accessor::<_, ListValue>(
-                    "list_value",
-                    StructuredValue::has_list_value,
-                    StructuredValue::get_list_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_message_accessor::<_, TupleValue>(
-                    "tuple_value",
-                    StructuredValue::has_tuple_value,
-                    StructuredValue::get_tuple_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_message_accessor::<_, DictValue>(
-                    "dict_value",
-                    StructuredValue::has_dict_value,
-                    StructuredValue::get_dict_value,
-                ),
-            );
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_message_accessor::<_, NamedTupleValue>(
-                    "named_tuple_value",
-                    StructuredValue::has_named_tuple_value,
-                    StructuredValue::get_named_tuple_value,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, NoneValue>(
+                "none_value",
+                StructuredValue::has_none_value,
+                StructuredValue::get_none_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_f64_accessor::<_>(
+                "float64_value",
+                StructuredValue::has_float64_value,
+                StructuredValue::get_float64_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_i64_accessor::<_>(
+                "int64_value",
+                StructuredValue::has_int64_value,
+                StructuredValue::get_int64_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_string_accessor::<_>(
+                "string_value",
+                StructuredValue::has_string_value,
+                StructuredValue::get_string_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_bool_accessor::<_>(
+                "bool_value",
+                StructuredValue::has_bool_value,
+                StructuredValue::get_bool_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, super::tensor_shape::TensorShapeProto>(
+                "tensor_shape_value",
+                StructuredValue::has_tensor_shape_value,
+                StructuredValue::get_tensor_shape_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_enum_accessor::<_, super::types::DataType>(
+                "tensor_dtype_value",
+                StructuredValue::has_tensor_dtype_value,
+                StructuredValue::get_tensor_dtype_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, TensorSpecProto>(
+                "tensor_spec_value",
+                StructuredValue::has_tensor_spec_value,
+                StructuredValue::get_tensor_spec_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, TypeSpecProto>(
+                "type_spec_value",
+                StructuredValue::has_type_spec_value,
+                StructuredValue::get_type_spec_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, ListValue>(
+                "list_value",
+                StructuredValue::has_list_value,
+                StructuredValue::get_list_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, TupleValue>(
+                "tuple_value",
+                StructuredValue::has_tuple_value,
+                StructuredValue::get_tuple_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, DictValue>(
+                "dict_value",
+                StructuredValue::has_dict_value,
+                StructuredValue::get_dict_value,
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, NamedTupleValue>(
+                "named_tuple_value",
+                StructuredValue::has_named_tuple_value,
+                StructuredValue::get_named_tuple_value,
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<StructuredValue>(
                 "StructuredValue",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -1124,7 +1005,7 @@ impl ::protobuf::reflect::ProtobufValue for StructuredValue {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct NoneValue {
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
@@ -1148,21 +1029,13 @@ impl ::protobuf::Message for NoneValue {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -1177,10 +1050,7 @@ impl ::protobuf::Message for NoneValue {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1216,14 +1086,13 @@ impl ::protobuf::Message for NoneValue {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let fields = ::std::vec::Vec::new();
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<NoneValue>(
                 "NoneValue",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -1252,7 +1121,7 @@ impl ::protobuf::reflect::ProtobufValue for NoneValue {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct ListValue {
     // message fields
     pub values: ::protobuf::RepeatedField<StructuredValue>,
@@ -1273,6 +1142,7 @@ impl ListValue {
     }
 
     // repeated .tensorflow.StructuredValue values = 1;
+
 
     pub fn get_values(&self) -> &[StructuredValue] {
         &self.values
@@ -1303,28 +1173,20 @@ impl ::protobuf::Message for ListValue {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.values)?;
-                }
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -1337,21 +1199,18 @@ impl ::protobuf::Message for ListValue {
         for value in &self.values {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         for v in &self.values {
             os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
+        };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1387,24 +1246,18 @@ impl ::protobuf::Message for ListValue {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(
-                ::protobuf::reflect::accessor::make_repeated_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<StructuredValue>,
-                >(
-                    "values",
-                    |m: &ListValue| &m.values,
-                    |m: &mut ListValue| &mut m.values,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<StructuredValue>>(
+                "values",
+                |m: &ListValue| { &m.values },
+                |m: &mut ListValue| { &mut m.values },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<ListValue>(
                 "ListValue",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -1434,7 +1287,7 @@ impl ::protobuf::reflect::ProtobufValue for ListValue {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct TupleValue {
     // message fields
     pub values: ::protobuf::RepeatedField<StructuredValue>,
@@ -1455,6 +1308,7 @@ impl TupleValue {
     }
 
     // repeated .tensorflow.StructuredValue values = 1;
+
 
     pub fn get_values(&self) -> &[StructuredValue] {
         &self.values
@@ -1485,28 +1339,20 @@ impl ::protobuf::Message for TupleValue {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.values)?;
-                }
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -1519,21 +1365,18 @@ impl ::protobuf::Message for TupleValue {
         for value in &self.values {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         for v in &self.values {
             os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
+        };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1569,24 +1412,18 @@ impl ::protobuf::Message for TupleValue {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(
-                ::protobuf::reflect::accessor::make_repeated_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<StructuredValue>,
-                >(
-                    "values",
-                    |m: &TupleValue| &m.values,
-                    |m: &mut TupleValue| &mut m.values,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<StructuredValue>>(
+                "values",
+                |m: &TupleValue| { &m.values },
+                |m: &mut TupleValue| { &mut m.values },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<TupleValue>(
                 "TupleValue",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -1616,7 +1453,7 @@ impl ::protobuf::reflect::ProtobufValue for TupleValue {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct DictValue {
     // message fields
     pub fields: ::std::collections::HashMap<::std::string::String, StructuredValue>,
@@ -1638,9 +1475,8 @@ impl DictValue {
 
     // repeated .tensorflow.DictValue.FieldsEntry fields = 1;
 
-    pub fn get_fields(
-        &self,
-    ) -> &::std::collections::HashMap<::std::string::String, StructuredValue> {
+
+    pub fn get_fields(&self) -> &::std::collections::HashMap<::std::string::String, StructuredValue> {
         &self.fields
     }
     pub fn clear_fields(&mut self) {
@@ -1648,24 +1484,17 @@ impl DictValue {
     }
 
     // Param is passed by value, moved
-    pub fn set_fields(
-        &mut self,
-        v: ::std::collections::HashMap<::std::string::String, StructuredValue>,
-    ) {
+    pub fn set_fields(&mut self, v: ::std::collections::HashMap<::std::string::String, StructuredValue>) {
         self.fields = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_fields(
-        &mut self,
-    ) -> &mut ::std::collections::HashMap<::std::string::String, StructuredValue> {
+    pub fn mut_fields(&mut self) -> &mut ::std::collections::HashMap<::std::string::String, StructuredValue> {
         &mut self.fields
     }
 
     // Take field
-    pub fn take_fields(
-        &mut self,
-    ) -> ::std::collections::HashMap<::std::string::String, StructuredValue> {
+    pub fn take_fields(&mut self) -> ::std::collections::HashMap<::std::string::String, StructuredValue> {
         ::std::mem::replace(&mut self.fields, ::std::collections::HashMap::new())
     }
 }
@@ -1675,27 +1504,16 @@ impl ::protobuf::Message for DictValue {
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_map_into::<
-                        ::protobuf::types::ProtobufTypeString,
-                        ::protobuf::types::ProtobufTypeMessage<StructuredValue>,
-                    >(wire_type, is, &mut self.fields)?;
-                }
+                    ::protobuf::rt::read_map_into::<::protobuf::types::ProtobufTypeString, ::protobuf::types::ProtobufTypeMessage<StructuredValue>>(wire_type, is, &mut self.fields)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -1705,23 +1523,14 @@ impl ::protobuf::Message for DictValue {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        my_size += ::protobuf::rt::compute_map_size::<
-            ::protobuf::types::ProtobufTypeString,
-            ::protobuf::types::ProtobufTypeMessage<StructuredValue>,
-        >(1, &self.fields);
+        my_size += ::protobuf::rt::compute_map_size::<::protobuf::types::ProtobufTypeString, ::protobuf::types::ProtobufTypeMessage<StructuredValue>>(1, &self.fields);
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
-        ::protobuf::rt::write_map_with_cached_sizes::<
-            ::protobuf::types::ProtobufTypeString,
-            ::protobuf::types::ProtobufTypeMessage<StructuredValue>,
-        >(1, &self.fields, os)?;
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        ::protobuf::rt::write_map_with_cached_sizes::<::protobuf::types::ProtobufTypeString, ::protobuf::types::ProtobufTypeMessage<StructuredValue>>(1, &self.fields, os)?;
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1757,23 +1566,18 @@ impl ::protobuf::Message for DictValue {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_map_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-                ::protobuf::types::ProtobufTypeMessage<StructuredValue>,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_map_accessor::<_, ::protobuf::types::ProtobufTypeString, ::protobuf::types::ProtobufTypeMessage<StructuredValue>>(
                 "fields",
-                |m: &DictValue| &m.fields,
-                |m: &mut DictValue| &mut m.fields,
+                |m: &DictValue| { &m.fields },
+                |m: &mut DictValue| { &mut m.fields },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<DictValue>(
                 "DictValue",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -1803,7 +1607,7 @@ impl ::protobuf::reflect::ProtobufValue for DictValue {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct PairValue {
     // message fields
     pub key: ::std::string::String,
@@ -1825,6 +1629,7 @@ impl PairValue {
     }
 
     // string key = 1;
+
 
     pub fn get_key(&self) -> &str {
         &self.key
@@ -1851,10 +1656,9 @@ impl PairValue {
 
     // .tensorflow.StructuredValue value = 2;
 
+
     pub fn get_value(&self) -> &StructuredValue {
-        self.value
-            .as_ref()
-            .unwrap_or_else(|| <StructuredValue as ::protobuf::Message>::default_instance())
+        self.value.as_ref().unwrap_or_else(|| <StructuredValue as ::protobuf::Message>::default_instance())
     }
     pub fn clear_value(&mut self) {
         self.value.clear();
@@ -1890,31 +1694,23 @@ impl ::protobuf::Message for PairValue {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.key)?;
-                }
+                },
                 2 => {
                     ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.value)?;
-                }
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -1936,10 +1732,7 @@ impl ::protobuf::Message for PairValue {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if !self.key.is_empty() {
             os.write_string(1, &self.key)?;
         }
@@ -1983,32 +1776,23 @@ impl ::protobuf::Message for PairValue {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "key",
-                |m: &PairValue| &m.key,
-                |m: &mut PairValue| &mut m.key,
+                |m: &PairValue| { &m.key },
+                |m: &mut PairValue| { &mut m.key },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<StructuredValue>,
-                >(
-                    "value",
-                    |m: &PairValue| &m.value,
-                    |m: &mut PairValue| &mut m.value,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<StructuredValue>>(
+                "value",
+                |m: &PairValue| { &m.value },
+                |m: &mut PairValue| { &mut m.value },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<PairValue>(
                 "PairValue",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -2039,7 +1823,7 @@ impl ::protobuf::reflect::ProtobufValue for PairValue {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct NamedTupleValue {
     // message fields
     pub name: ::std::string::String,
@@ -2061,6 +1845,7 @@ impl NamedTupleValue {
     }
 
     // string name = 1;
+
 
     pub fn get_name(&self) -> &str {
         &self.name
@@ -2086,6 +1871,7 @@ impl NamedTupleValue {
     }
 
     // repeated .tensorflow.PairValue values = 2;
+
 
     pub fn get_values(&self) -> &[PairValue] {
         &self.values
@@ -2116,35 +1902,23 @@ impl ::protobuf::Message for NamedTupleValue {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.name,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.name)?;
+                },
                 2 => {
                     ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.values)?;
-                }
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -2160,16 +1934,13 @@ impl ::protobuf::Message for NamedTupleValue {
         for value in &self.values {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if !self.name.is_empty() {
             os.write_string(1, &self.name)?;
         }
@@ -2177,7 +1948,7 @@ impl ::protobuf::Message for NamedTupleValue {
             os.write_tag(2, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
+        };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -2213,32 +1984,23 @@ impl ::protobuf::Message for NamedTupleValue {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "name",
-                |m: &NamedTupleValue| &m.name,
-                |m: &mut NamedTupleValue| &mut m.name,
+                |m: &NamedTupleValue| { &m.name },
+                |m: &mut NamedTupleValue| { &mut m.name },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_repeated_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<PairValue>,
-                >(
-                    "values",
-                    |m: &NamedTupleValue| &m.values,
-                    |m: &mut NamedTupleValue| &mut m.values,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<PairValue>>(
+                "values",
+                |m: &NamedTupleValue| { &m.values },
+                |m: &mut NamedTupleValue| { &mut m.values },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<NamedTupleValue>(
                 "NamedTupleValue",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -2269,7 +2031,7 @@ impl ::protobuf::reflect::ProtobufValue for NamedTupleValue {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct TensorSpecProto {
     // message fields
     pub name: ::std::string::String,
@@ -2292,6 +2054,7 @@ impl TensorSpecProto {
     }
 
     // string name = 1;
+
 
     pub fn get_name(&self) -> &str {
         &self.name
@@ -2318,10 +2081,9 @@ impl TensorSpecProto {
 
     // .tensorflow.TensorShapeProto shape = 2;
 
+
     pub fn get_shape(&self) -> &super::tensor_shape::TensorShapeProto {
-        self.shape.as_ref().unwrap_or_else(|| {
-            <super::tensor_shape::TensorShapeProto as ::protobuf::Message>::default_instance()
-        })
+        self.shape.as_ref().unwrap_or_else(|| <super::tensor_shape::TensorShapeProto as ::protobuf::Message>::default_instance())
     }
     pub fn clear_shape(&mut self) {
         self.shape.clear();
@@ -2347,12 +2109,11 @@ impl TensorSpecProto {
 
     // Take field
     pub fn take_shape(&mut self) -> super::tensor_shape::TensorShapeProto {
-        self.shape
-            .take()
-            .unwrap_or_else(|| super::tensor_shape::TensorShapeProto::new())
+        self.shape.take().unwrap_or_else(|| super::tensor_shape::TensorShapeProto::new())
     }
 
     // .tensorflow.DataType dtype = 3;
+
 
     pub fn get_dtype(&self) -> super::types::DataType {
         self.dtype
@@ -2373,42 +2134,26 @@ impl ::protobuf::Message for TensorSpecProto {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.name,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.name)?;
+                },
                 2 => {
                     ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.shape)?;
-                }
-                3 => ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(
-                    wire_type,
-                    is,
-                    &mut self.dtype,
-                    3,
-                    &mut self.unknown_fields,
-                )?,
+                },
+                3 => {
+                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.dtype, 3, &mut self.unknown_fields)?
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -2433,10 +2178,7 @@ impl ::protobuf::Message for TensorSpecProto {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if !self.name.is_empty() {
             os.write_string(1, &self.name)?;
         }
@@ -2483,40 +2225,28 @@ impl ::protobuf::Message for TensorSpecProto {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "name",
-                |m: &TensorSpecProto| &m.name,
-                |m: &mut TensorSpecProto| &mut m.name,
+                |m: &TensorSpecProto| { &m.name },
+                |m: &mut TensorSpecProto| { &mut m.name },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<super::tensor_shape::TensorShapeProto>,
-                >(
-                    "shape",
-                    |m: &TensorSpecProto| &m.shape,
-                    |m: &mut TensorSpecProto| &mut m.shape,
-                ),
-            );
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeEnum<super::types::DataType>,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::tensor_shape::TensorShapeProto>>(
+                "shape",
+                |m: &TensorSpecProto| { &m.shape },
+                |m: &mut TensorSpecProto| { &mut m.shape },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<super::types::DataType>>(
                 "dtype",
-                |m: &TensorSpecProto| &m.dtype,
-                |m: &mut TensorSpecProto| &mut m.dtype,
+                |m: &TensorSpecProto| { &m.dtype },
+                |m: &mut TensorSpecProto| { &mut m.dtype },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<TensorSpecProto>(
                 "TensorSpecProto",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -2548,7 +2278,7 @@ impl ::protobuf::reflect::ProtobufValue for TensorSpecProto {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct TypeSpecProto {
     // message fields
     pub type_spec_class: TypeSpecProto_TypeSpecClass,
@@ -2572,6 +2302,7 @@ impl TypeSpecProto {
 
     // .tensorflow.TypeSpecProto.TypeSpecClass type_spec_class = 1;
 
+
     pub fn get_type_spec_class(&self) -> TypeSpecProto_TypeSpecClass {
         self.type_spec_class
     }
@@ -2586,10 +2317,9 @@ impl TypeSpecProto {
 
     // .tensorflow.StructuredValue type_state = 2;
 
+
     pub fn get_type_state(&self) -> &StructuredValue {
-        self.type_state
-            .as_ref()
-            .unwrap_or_else(|| <StructuredValue as ::protobuf::Message>::default_instance())
+        self.type_state.as_ref().unwrap_or_else(|| <StructuredValue as ::protobuf::Message>::default_instance())
     }
     pub fn clear_type_state(&mut self) {
         self.type_state.clear();
@@ -2615,12 +2345,11 @@ impl TypeSpecProto {
 
     // Take field
     pub fn take_type_state(&mut self) -> StructuredValue {
-        self.type_state
-            .take()
-            .unwrap_or_else(|| StructuredValue::new())
+        self.type_state.take().unwrap_or_else(|| StructuredValue::new())
     }
 
     // string type_spec_class_name = 3;
+
 
     pub fn get_type_spec_class_name(&self) -> &str {
         &self.type_spec_class_name
@@ -2652,46 +2381,26 @@ impl ::protobuf::Message for TypeSpecProto {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
-                1 => ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(
-                    wire_type,
-                    is,
-                    &mut self.type_spec_class,
-                    1,
-                    &mut self.unknown_fields,
-                )?,
+                1 => {
+                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.type_spec_class, 1, &mut self.unknown_fields)?
+                },
                 2 => {
-                    ::protobuf::rt::read_singular_message_into(
-                        wire_type,
-                        is,
-                        &mut self.type_state,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.type_state)?;
+                },
                 3 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.type_spec_class_name,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.type_spec_class_name)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -2716,10 +2425,7 @@ impl ::protobuf::Message for TypeSpecProto {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.type_spec_class != TypeSpecProto_TypeSpecClass::UNKNOWN {
             os.write_enum(1, ::protobuf::ProtobufEnum::value(&self.type_spec_class))?;
         }
@@ -2766,40 +2472,28 @@ impl ::protobuf::Message for TypeSpecProto {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeEnum<TypeSpecProto_TypeSpecClass>,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<TypeSpecProto_TypeSpecClass>>(
                 "type_spec_class",
-                |m: &TypeSpecProto| &m.type_spec_class,
-                |m: &mut TypeSpecProto| &mut m.type_spec_class,
+                |m: &TypeSpecProto| { &m.type_spec_class },
+                |m: &mut TypeSpecProto| { &mut m.type_spec_class },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<StructuredValue>,
-                >(
-                    "type_state",
-                    |m: &TypeSpecProto| &m.type_state,
-                    |m: &mut TypeSpecProto| &mut m.type_state,
-                ),
-            );
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<StructuredValue>>(
+                "type_state",
+                |m: &TypeSpecProto| { &m.type_state },
+                |m: &mut TypeSpecProto| { &mut m.type_state },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "type_spec_class_name",
-                |m: &TypeSpecProto| &m.type_spec_class_name,
-                |m: &mut TypeSpecProto| &mut m.type_spec_class_name,
+                |m: &TypeSpecProto| { &m.type_spec_class_name },
+                |m: &mut TypeSpecProto| { &mut m.type_spec_class_name },
             ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<TypeSpecProto>(
                 "TypeSpecProto",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -2831,7 +2525,7 @@ impl ::protobuf::reflect::ProtobufValue for TypeSpecProto {
     }
 }
 
-#[derive(Clone, PartialEq, Eq, Debug, Hash)]
+#[derive(Clone,PartialEq,Eq,Debug,Hash)]
 pub enum TypeSpecProto_TypeSpecClass {
     UNKNOWN = 0,
     SPARSE_TENSOR_SPEC = 1,
@@ -2860,7 +2554,7 @@ impl ::protobuf::ProtobufEnum for TypeSpecProto_TypeSpecClass {
             6 => ::std::option::Option::Some(TypeSpecProto_TypeSpecClass::DATA_ITERATOR_SPEC),
             7 => ::std::option::Option::Some(TypeSpecProto_TypeSpecClass::OPTIONAL_SPEC),
             8 => ::std::option::Option::Some(TypeSpecProto_TypeSpecClass::PER_REPLICA_SPEC),
-            _ => ::std::option::Option::None,
+            _ => ::std::option::Option::None
         }
     }
 
@@ -2880,18 +2574,15 @@ impl ::protobuf::ProtobufEnum for TypeSpecProto_TypeSpecClass {
     }
 
     fn enum_descriptor_static() -> &'static ::protobuf::reflect::EnumDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::EnumDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::EnumDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
-            ::protobuf::reflect::EnumDescriptor::new_pb_name::<TypeSpecProto_TypeSpecClass>(
-                "TypeSpecProto.TypeSpecClass",
-                file_descriptor_proto(),
-            )
+            ::protobuf::reflect::EnumDescriptor::new_pb_name::<TypeSpecProto_TypeSpecClass>("TypeSpecProto.TypeSpecClass", file_descriptor_proto())
         })
     }
 }
 
-impl ::std::marker::Copy for TypeSpecProto_TypeSpecClass {}
+impl ::std::marker::Copy for TypeSpecProto_TypeSpecClass {
+}
 
 impl ::std::default::Default for TypeSpecProto_TypeSpecClass {
     fn default() -> Self {
@@ -2949,14 +2640,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x12\x14\n\x10PER_REPLICA_SPEC\x10\x08b\x06proto3\
 ";
 
-static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<
-    ::protobuf::descriptor::FileDescriptorProto,
-> = ::protobuf::rt::LazyV2::INIT;
+static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::rt::LazyV2::INIT;
 
 fn parse_descriptor_proto() -> ::protobuf::descriptor::FileDescriptorProto {
     ::protobuf::parse_from_bytes(file_descriptor_proto_data).unwrap()
 }
 
 pub fn file_descriptor_proto() -> &'static ::protobuf::descriptor::FileDescriptorProto {
-    file_descriptor_proto_lazy.get(|| parse_descriptor_proto())
+    file_descriptor_proto_lazy.get(|| {
+        parse_descriptor_proto()
+    })
 }

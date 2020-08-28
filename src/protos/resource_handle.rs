@@ -23,7 +23,7 @@
 /// of protobuf runtime.
 // const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_2_17_0;
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct ResourceHandleProto {
     // message fields
     pub device: ::std::string::String,
@@ -50,6 +50,7 @@ impl ResourceHandleProto {
 
     // string device = 1;
 
+
     pub fn get_device(&self) -> &str {
         &self.device
     }
@@ -74,6 +75,7 @@ impl ResourceHandleProto {
     }
 
     // string container = 2;
+
 
     pub fn get_container(&self) -> &str {
         &self.container
@@ -100,6 +102,7 @@ impl ResourceHandleProto {
 
     // string name = 3;
 
+
     pub fn get_name(&self) -> &str {
         &self.name
     }
@@ -125,6 +128,7 @@ impl ResourceHandleProto {
 
     // uint64 hash_code = 4;
 
+
     pub fn get_hash_code(&self) -> u64 {
         self.hash_code
     }
@@ -138,6 +142,7 @@ impl ResourceHandleProto {
     }
 
     // string maybe_type_name = 5;
+
 
     pub fn get_maybe_type_name(&self) -> &str {
         &self.maybe_type_name
@@ -164,6 +169,7 @@ impl ResourceHandleProto {
 
     // repeated .tensorflow.ResourceHandleProto.DtypeAndShape dtypes_and_shapes = 6;
 
+
     pub fn get_dtypes_and_shapes(&self) -> &[ResourceHandleProto_DtypeAndShape] {
         &self.dtypes_and_shapes
     }
@@ -172,28 +178,18 @@ impl ResourceHandleProto {
     }
 
     // Param is passed by value, moved
-    pub fn set_dtypes_and_shapes(
-        &mut self,
-        v: ::protobuf::RepeatedField<ResourceHandleProto_DtypeAndShape>,
-    ) {
+    pub fn set_dtypes_and_shapes(&mut self, v: ::protobuf::RepeatedField<ResourceHandleProto_DtypeAndShape>) {
         self.dtypes_and_shapes = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_dtypes_and_shapes(
-        &mut self,
-    ) -> &mut ::protobuf::RepeatedField<ResourceHandleProto_DtypeAndShape> {
+    pub fn mut_dtypes_and_shapes(&mut self) -> &mut ::protobuf::RepeatedField<ResourceHandleProto_DtypeAndShape> {
         &mut self.dtypes_and_shapes
     }
 
     // Take field
-    pub fn take_dtypes_and_shapes(
-        &mut self,
-    ) -> ::protobuf::RepeatedField<ResourceHandleProto_DtypeAndShape> {
-        ::std::mem::replace(
-            &mut self.dtypes_and_shapes,
-            ::protobuf::RepeatedField::new(),
-        )
+    pub fn take_dtypes_and_shapes(&mut self) -> ::protobuf::RepeatedField<ResourceHandleProto_DtypeAndShape> {
+        ::std::mem::replace(&mut self.dtypes_and_shapes, ::protobuf::RepeatedField::new())
     }
 }
 
@@ -203,69 +199,39 @@ impl ::protobuf::Message for ResourceHandleProto {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.device,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.device)?;
+                },
                 2 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.container,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.container)?;
+                },
                 3 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.name,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.name)?;
+                },
                 4 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_uint64()?;
                     self.hash_code = tmp;
-                }
+                },
                 5 => {
-                    ::protobuf::rt::read_singular_proto3_string_into(
-                        wire_type,
-                        is,
-                        &mut self.maybe_type_name,
-                    )?;
-                }
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.maybe_type_name)?;
+                },
                 6 => {
-                    ::protobuf::rt::read_repeated_message_into(
-                        wire_type,
-                        is,
-                        &mut self.dtypes_and_shapes,
-                    )?;
-                }
+                    ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.dtypes_and_shapes)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -285,11 +251,7 @@ impl ::protobuf::Message for ResourceHandleProto {
             my_size += ::protobuf::rt::string_size(3, &self.name);
         }
         if self.hash_code != 0 {
-            my_size += ::protobuf::rt::value_size(
-                4,
-                self.hash_code,
-                ::protobuf::wire_format::WireTypeVarint,
-            );
+            my_size += ::protobuf::rt::value_size(4, self.hash_code, ::protobuf::wire_format::WireTypeVarint);
         }
         if !self.maybe_type_name.is_empty() {
             my_size += ::protobuf::rt::string_size(5, &self.maybe_type_name);
@@ -297,16 +259,13 @@ impl ::protobuf::Message for ResourceHandleProto {
         for value in &self.dtypes_and_shapes {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if !self.device.is_empty() {
             os.write_string(1, &self.device)?;
         }
@@ -326,7 +285,7 @@ impl ::protobuf::Message for ResourceHandleProto {
             os.write_tag(6, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
+        };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -362,64 +321,43 @@ impl ::protobuf::Message for ResourceHandleProto {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "device",
-                |m: &ResourceHandleProto| &m.device,
-                |m: &mut ResourceHandleProto| &mut m.device,
+                |m: &ResourceHandleProto| { &m.device },
+                |m: &mut ResourceHandleProto| { &mut m.device },
             ));
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "container",
-                |m: &ResourceHandleProto| &m.container,
-                |m: &mut ResourceHandleProto| &mut m.container,
+                |m: &ResourceHandleProto| { &m.container },
+                |m: &mut ResourceHandleProto| { &mut m.container },
             ));
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "name",
-                |m: &ResourceHandleProto| &m.name,
-                |m: &mut ResourceHandleProto| &mut m.name,
+                |m: &ResourceHandleProto| { &m.name },
+                |m: &mut ResourceHandleProto| { &mut m.name },
             ));
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeUint64,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint64>(
                 "hash_code",
-                |m: &ResourceHandleProto| &m.hash_code,
-                |m: &mut ResourceHandleProto| &mut m.hash_code,
+                |m: &ResourceHandleProto| { &m.hash_code },
+                |m: &mut ResourceHandleProto| { &mut m.hash_code },
             ));
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeString,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
                 "maybe_type_name",
-                |m: &ResourceHandleProto| &m.maybe_type_name,
-                |m: &mut ResourceHandleProto| &mut m.maybe_type_name,
+                |m: &ResourceHandleProto| { &m.maybe_type_name },
+                |m: &mut ResourceHandleProto| { &mut m.maybe_type_name },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_repeated_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<ResourceHandleProto_DtypeAndShape>,
-                >(
-                    "dtypes_and_shapes",
-                    |m: &ResourceHandleProto| &m.dtypes_and_shapes,
-                    |m: &mut ResourceHandleProto| &mut m.dtypes_and_shapes,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<ResourceHandleProto_DtypeAndShape>>(
+                "dtypes_and_shapes",
+                |m: &ResourceHandleProto| { &m.dtypes_and_shapes },
+                |m: &mut ResourceHandleProto| { &mut m.dtypes_and_shapes },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<ResourceHandleProto>(
                 "ResourceHandleProto",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -454,7 +392,7 @@ impl ::protobuf::reflect::ProtobufValue for ResourceHandleProto {
     }
 }
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct ResourceHandleProto_DtypeAndShape {
     // message fields
     pub dtype: super::types::DataType,
@@ -477,6 +415,7 @@ impl ResourceHandleProto_DtypeAndShape {
 
     // .tensorflow.DataType dtype = 1;
 
+
     pub fn get_dtype(&self) -> super::types::DataType {
         self.dtype
     }
@@ -491,10 +430,9 @@ impl ResourceHandleProto_DtypeAndShape {
 
     // .tensorflow.TensorShapeProto shape = 2;
 
+
     pub fn get_shape(&self) -> &super::tensor_shape::TensorShapeProto {
-        self.shape.as_ref().unwrap_or_else(|| {
-            <super::tensor_shape::TensorShapeProto as ::protobuf::Message>::default_instance()
-        })
+        self.shape.as_ref().unwrap_or_else(|| <super::tensor_shape::TensorShapeProto as ::protobuf::Message>::default_instance())
     }
     pub fn clear_shape(&mut self) {
         self.shape.clear();
@@ -520,9 +458,7 @@ impl ResourceHandleProto_DtypeAndShape {
 
     // Take field
     pub fn take_shape(&mut self) -> super::tensor_shape::TensorShapeProto {
-        self.shape
-            .take()
-            .unwrap_or_else(|| super::tensor_shape::TensorShapeProto::new())
+        self.shape.take().unwrap_or_else(|| super::tensor_shape::TensorShapeProto::new())
     }
 }
 
@@ -532,35 +468,23 @@ impl ::protobuf::Message for ResourceHandleProto_DtypeAndShape {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
-                1 => ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(
-                    wire_type,
-                    is,
-                    &mut self.dtype,
-                    1,
-                    &mut self.unknown_fields,
-                )?,
+                1 => {
+                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.dtype, 1, &mut self.unknown_fields)?
+                },
                 2 => {
                     ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.shape)?;
-                }
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -582,10 +506,7 @@ impl ::protobuf::Message for ResourceHandleProto_DtypeAndShape {
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.dtype != super::types::DataType::DT_INVALID {
             os.write_enum(1, ::protobuf::ProtobufEnum::value(&self.dtype))?;
         }
@@ -629,8 +550,7 @@ impl ::protobuf::Message for ResourceHandleProto_DtypeAndShape {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
             fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<super::types::DataType>>(
@@ -652,8 +572,7 @@ impl ::protobuf::Message for ResourceHandleProto_DtypeAndShape {
     }
 
     fn default_instance() -> &'static ResourceHandleProto_DtypeAndShape {
-        static instance: ::protobuf::rt::LazyV2<ResourceHandleProto_DtypeAndShape> =
-            ::protobuf::rt::LazyV2::INIT;
+        static instance: ::protobuf::rt::LazyV2<ResourceHandleProto_DtypeAndShape> = ::protobuf::rt::LazyV2::INIT;
         instance.get(ResourceHandleProto_DtypeAndShape::new)
     }
 }
@@ -694,14 +613,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ework\xf8\x01\x01b\x06proto3\
 ";
 
-static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<
-    ::protobuf::descriptor::FileDescriptorProto,
-> = ::protobuf::rt::LazyV2::INIT;
+static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::rt::LazyV2::INIT;
 
 fn parse_descriptor_proto() -> ::protobuf::descriptor::FileDescriptorProto {
     ::protobuf::parse_from_bytes(file_descriptor_proto_data).unwrap()
 }
 
 pub fn file_descriptor_proto() -> &'static ::protobuf::descriptor::FileDescriptorProto {
-    file_descriptor_proto_lazy.get(|| parse_descriptor_proto())
+    file_descriptor_proto_lazy.get(|| {
+        parse_descriptor_proto()
+    })
 }

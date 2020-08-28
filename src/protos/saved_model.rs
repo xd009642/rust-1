@@ -23,7 +23,7 @@
 /// of protobuf runtime.
 // const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_2_17_0;
 
-#[derive(PartialEq, Clone, Default)]
+#[derive(PartialEq,Clone,Default)]
 pub struct SavedModel {
     // message fields
     pub saved_model_schema_version: i64,
@@ -46,6 +46,7 @@ impl SavedModel {
 
     // int64 saved_model_schema_version = 1;
 
+
     pub fn get_saved_model_schema_version(&self) -> i64 {
         self.saved_model_schema_version
     }
@@ -60,6 +61,7 @@ impl SavedModel {
 
     // repeated .tensorflow.MetaGraphDef meta_graphs = 2;
 
+
     pub fn get_meta_graphs(&self) -> &[super::meta_graph::MetaGraphDef] {
         &self.meta_graphs
     }
@@ -68,24 +70,17 @@ impl SavedModel {
     }
 
     // Param is passed by value, moved
-    pub fn set_meta_graphs(
-        &mut self,
-        v: ::protobuf::RepeatedField<super::meta_graph::MetaGraphDef>,
-    ) {
+    pub fn set_meta_graphs(&mut self, v: ::protobuf::RepeatedField<super::meta_graph::MetaGraphDef>) {
         self.meta_graphs = v;
     }
 
     // Mutable pointer to the field.
-    pub fn mut_meta_graphs(
-        &mut self,
-    ) -> &mut ::protobuf::RepeatedField<super::meta_graph::MetaGraphDef> {
+    pub fn mut_meta_graphs(&mut self) -> &mut ::protobuf::RepeatedField<super::meta_graph::MetaGraphDef> {
         &mut self.meta_graphs
     }
 
     // Take field
-    pub fn take_meta_graphs(
-        &mut self,
-    ) -> ::protobuf::RepeatedField<super::meta_graph::MetaGraphDef> {
+    pub fn take_meta_graphs(&mut self) -> ::protobuf::RepeatedField<super::meta_graph::MetaGraphDef> {
         ::std::mem::replace(&mut self.meta_graphs, ::protobuf::RepeatedField::new())
     }
 }
@@ -96,41 +91,27 @@ impl ::protobuf::Message for SavedModel {
             if !v.is_initialized() {
                 return false;
             }
-        }
+        };
         true
     }
 
-    fn merge_from(
-        &mut self,
-        is: &mut ::protobuf::CodedInputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         while !is.eof()? {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
                     if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(
-                            wire_type,
-                        ));
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_int64()?;
                     self.saved_model_schema_version = tmp;
-                }
+                },
                 2 => {
-                    ::protobuf::rt::read_repeated_message_into(
-                        wire_type,
-                        is,
-                        &mut self.meta_graphs,
-                    )?;
-                }
+                    ::protobuf::rt::read_repeated_message_into(wire_type, is, &mut self.meta_graphs)?;
+                },
                 _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(
-                        field_number,
-                        wire_type,
-                        is,
-                        self.mut_unknown_fields(),
-                    )?;
-                }
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
             };
         }
         ::std::result::Result::Ok(())
@@ -141,25 +122,18 @@ impl ::protobuf::Message for SavedModel {
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
         if self.saved_model_schema_version != 0 {
-            my_size += ::protobuf::rt::value_size(
-                1,
-                self.saved_model_schema_version,
-                ::protobuf::wire_format::WireTypeVarint,
-            );
+            my_size += ::protobuf::rt::value_size(1, self.saved_model_schema_version, ::protobuf::wire_format::WireTypeVarint);
         }
         for value in &self.meta_graphs {
             let len = value.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
         my_size
     }
 
-    fn write_to_with_cached_sizes(
-        &self,
-        os: &mut ::protobuf::CodedOutputStream<'_>,
-    ) -> ::protobuf::ProtobufResult<()> {
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
         if self.saved_model_schema_version != 0 {
             os.write_int64(1, self.saved_model_schema_version)?;
         }
@@ -167,7 +141,7 @@ impl ::protobuf::Message for SavedModel {
             os.write_tag(2, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
+        };
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -203,32 +177,23 @@ impl ::protobuf::Message for SavedModel {
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> =
-            ::protobuf::rt::LazyV2::INIT;
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
         descriptor.get(|| {
             let mut fields = ::std::vec::Vec::new();
-            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<
-                _,
-                ::protobuf::types::ProtobufTypeInt64,
-            >(
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeInt64>(
                 "saved_model_schema_version",
-                |m: &SavedModel| &m.saved_model_schema_version,
-                |m: &mut SavedModel| &mut m.saved_model_schema_version,
+                |m: &SavedModel| { &m.saved_model_schema_version },
+                |m: &mut SavedModel| { &mut m.saved_model_schema_version },
             ));
-            fields.push(
-                ::protobuf::reflect::accessor::make_repeated_field_accessor::<
-                    _,
-                    ::protobuf::types::ProtobufTypeMessage<super::meta_graph::MetaGraphDef>,
-                >(
-                    "meta_graphs",
-                    |m: &SavedModel| &m.meta_graphs,
-                    |m: &mut SavedModel| &mut m.meta_graphs,
-                ),
-            );
+            fields.push(::protobuf::reflect::accessor::make_repeated_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::meta_graph::MetaGraphDef>>(
+                "meta_graphs",
+                |m: &SavedModel| { &m.meta_graphs },
+                |m: &mut SavedModel| { &mut m.meta_graphs },
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<SavedModel>(
                 "SavedModel",
                 fields,
-                file_descriptor_proto(),
+                file_descriptor_proto()
             )
         })
     }
@@ -269,14 +234,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x01b\x06proto3\
 ";
 
-static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<
-    ::protobuf::descriptor::FileDescriptorProto,
-> = ::protobuf::rt::LazyV2::INIT;
+static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::rt::LazyV2::INIT;
 
 fn parse_descriptor_proto() -> ::protobuf::descriptor::FileDescriptorProto {
     ::protobuf::parse_from_bytes(file_descriptor_proto_data).unwrap()
 }
 
 pub fn file_descriptor_proto() -> &'static ::protobuf::descriptor::FileDescriptorProto {
-    file_descriptor_proto_lazy.get(|| parse_descriptor_proto())
+    file_descriptor_proto_lazy.get(|| {
+        parse_descriptor_proto()
+    })
 }
